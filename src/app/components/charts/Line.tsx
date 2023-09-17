@@ -38,8 +38,8 @@ const LineChart = () => {
                     ],
                     datasets: [
                         {
-                            data: [100, 120, 115, 134, 168, 132, 200],
-                            backgroundColor: "purple",
+                            data: [100, 120, 470, 140, 168, 132, 200],
+                            backgroundColor: "red",
                         },
                     ],
                 }}
