@@ -20,7 +20,7 @@ const Tabla = ({ nombre = 'poi', geo }: DatosProps) => {
 
     return (
         <>
-            <div>Tabla PIROBA de {nombre}</div>
+            <div>Tabla de {nombre}</div>
             <button onClick={() => orden()}>Ordena</button>
 
             <table>
