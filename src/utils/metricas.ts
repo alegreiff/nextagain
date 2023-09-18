@@ -1,4 +1,4 @@
-import { MetricAPI } from "@/models/MetricasApi";
+import { MetricAPI, datosMapa } from "@/models/MetricasApi";
 
 const loadMetricas = async () => {
   const metricasres = await fetch(
@@ -11,4 +11,34 @@ const loadMetricas = async () => {
 export const geoData = async () => {
   const geoDatos = await loadMetricas();
   return geoDatos.procedencia;
+};
+
+export const geoResumen = async () => {
+  const datos = await loadMetricas();
+  return datos.procedencia_control;
+};
+
+export const geoMapaAcumulado = async () => {
+  const datos = await loadMetricas();
+  const datosGlobales = datos.procedencia_control;
+
+  let resultado: datosMapa[] = [];
+  datosGlobales.map((dato) => {
+    resultado.push({ country: dato.c, value: dato.s });
+  });
+
+  return resultado;
+};
+
+export const geoDataYear = async (year: number) => {
+  const geoDatos = await loadMetricas();
+  const datos = geoDatos.procedencia;
+  const salida = datos.filter((dato) => (dato.y = year));
+  return salida;
+  //return geoDatos.procedencia;
+};
+
+export const getPaises = async () => {
+  const datos = await loadMetricas();
+  return datos.paises;
 };

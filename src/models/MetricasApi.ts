@@ -6,11 +6,13 @@ export interface MetricAPI {
   version: number;
   author: string;
   procedencia: Procedencia[];
+  procedencia_control: ProcedenciaControl[];
+  paises: string[];
   paginas: Pagina[];
-  edades: Edade[];
+  edades: Edades[];
 }
 
-export interface Edade {
+export interface Edades {
   y: number;
   m: number;
   r: Rango;
@@ -40,4 +42,16 @@ export interface Procedencia {
   m: number;
   s: number;
   u: number;
+}
+
+export interface ProcedenciaControl {
+  p: string;
+  s: number;
+  u: number;
+  c: string;
+}
+
+export interface datosMapa {
+  country: string;
+  value: number;
 }

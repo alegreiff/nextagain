@@ -19,3 +19,16 @@
 body {
   color: rgb(var(--foreground-rgb));
 }
+
+.btn_year {
+  @apply py-2.5 px-5 mr-2 mb-2 text-xl font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 cursor-pointer h-16;
+}
+.btn_accum {
+  @apply bg-amber-100;
+}
+.btn_active {
+  @apply bg-red-400;
+}
+.react-datepicker__month-text {
+  @apply text-red-800 font-bold text-2xl;
+}

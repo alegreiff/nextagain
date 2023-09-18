@@ -29,6 +29,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-8">
+      <p>https://morioh.com/a/f94c0cc32896/a-simple-compact-and-free-react-svg-world-map</p>
 
       <h2 className="p-4 bg-amber-300">hola mundo</h2>
       <ProductCard />

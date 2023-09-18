@@ -1,10 +1,12 @@
-import { MetricAPI, Procedencia } from '@/models/MetricasApi';
+import type { MetricAPI, Procedencia, ProcedenciaControl } from '@/models/MetricasApi';
 import { Users } from '@/models/Users';
-import { geoData } from '@/utils/metricas';
+import { geoData, geoResumen } from '@/utils/metricas';
 import { losDatos } from '@/utils/users';
 import React from 'react'
 import _orderBy from "lodash/orderBy";
 import Tabla from '../components/paises/Tabla';
+import ResumenPaises from '../components/paises/Resumen';
+import ReactGoo from '../components/charts/ReactGoo';
 
 
 const UsersPage = async () => {
@@ -17,6 +19,7 @@ const UsersPage = async () => {
     const metricas: MetricAPI = await metricasres.json(); */
     /* const geo: Procedencia[] = metricas.procedencia.slice(0, 10); */
     const geoAll: Procedencia[] = await geoData();
+    const geoDatos: ProcedenciaControl[] = await geoResumen();
     //let geo = geoAll.slice(0, 22)
 
     const paises = [
@@ -41,7 +44,10 @@ const UsersPage = async () => {
             <ul>
                 {users.map(user => <li key={user.id}>{user.name}</li>)}
             </ul>
-            <Tabla nombre='LoorLab' geo={geoAll} />
+            {/* <Tabla nombre='LoorLab' geo={geoAll} /> */}
+            <ReactGoo datos={geoDatos} />
+            <ResumenPaises datos={geoDatos} />
+
 
 
             {/* <ul>
