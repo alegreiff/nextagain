@@ -54,4 +54,7 @@ export interface ProcedenciaControl {
 export interface datosMapa {
   country: string;
   value: number;
+  year?: number;
+  mes?: number;
+  pais?: string;
 }

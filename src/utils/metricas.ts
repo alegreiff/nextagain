@@ -1,4 +1,7 @@
 import { MetricAPI, datosMapa } from "@/models/MetricasApi";
+import _sumBy from "lodash/sumBy";
+import _orderBy from "lodash/orderBy";
+import _groupBy from "lodash/groupBy";
 
 const loadMetricas = async () => {
   const metricasres = await fetch(
@@ -24,18 +27,33 @@ export const geoMapaAcumulado = async () => {
 
   let resultado: datosMapa[] = [];
   datosGlobales.map((dato) => {
-    resultado.push({ country: dato.c, value: dato.s });
+    resultado.push({ country: dato.c, value: dato.s, pais: dato.p });
   });
 
   return resultado;
 };
 
+export const geoProcedencia = async () => {
+  const geoDatos = await loadMetricas();
+  const datos = geoDatos.procedencia;
+  return datos;
+};
+
 export const geoDataYear = async (year: number) => {
   const geoDatos = await loadMetricas();
   const datos = geoDatos.procedencia;
-  const salida = datos.filter((dato) => (dato.y = year));
-  return salida;
-  //return geoDatos.procedencia;
+  const salida = datos.filter((dato) => dato.y === year);
+  const res = _groupBy(salida, "c");
+  let resultado: datosMapa[] = [];
+
+  Object.entries(res).map((entry) => {
+    let key = entry[0];
+    let value = entry[1];
+    let sess = _sumBy(value, "s");
+    resultado.push({ country: key, value: sess });
+  });
+  resultado = _orderBy(resultado, ["value"], ["desc"]);
+  return resultado;
 };
 
 export const getPaises = async () => {

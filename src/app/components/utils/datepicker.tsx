@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker, { registerLocale } from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,10 +9,12 @@ import SelectorYears from './SelectorYears';
 
 registerLocale("es", es); // register it with the name you want
 
+interface Props {
+    cambiaFuenteDatos: (year: number) => void
+    cambiaDatosMes: (year: number, mes: number) => void
+}
 
-const Datepicker = () => {
-
-
+const Datepicker = ({ cambiaFuenteDatos, cambiaDatosMes }: Props) => {
 
 
 
@@ -21,8 +23,17 @@ const Datepicker = () => {
     const [year, setYear] = useState(0);
     const [defaultSelected, setDefaultSelected] = useState(-1)
 
+    useEffect(() => {
+        cambiaDatosMes(year, mes)
+    }, [mes, year])
+
     const valor = (val: number) => {
         setDefaultSelected(val)
+        if (val >= 1000) {
+            setMes(0)
+            setYear(0)
+            cambiaFuenteDatos(val)
+        }
     }
     const cambiaFecha = (fecha: Date | null) => {
 
@@ -30,12 +41,12 @@ const Datepicker = () => {
             setStartDate(fecha)
             setMes(fecha.getMonth() + 1)
             setYear(fecha.getFullYear())
+
             setDefaultSelected(fecha.getMonth())
-
         }
+
+
     }
-
-
 
     return (
         <>
