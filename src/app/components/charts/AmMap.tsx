@@ -28,6 +28,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
         setDatopais(paisData)
 
 
+
     }, [pais])
 
     const [data, setdata] = useState(datos)
@@ -80,7 +81,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                     <label className="btn btn-primary" onClick={() => handleToggle('')}>Yay!</label>
                 </div>
             </Modal>
-            <div className="bg-amber-500">
+            <div className="bg-slate-50">
                 <div className='m-8 p-8 '>
                     {data &&
                         <div className="flex flex-row">
@@ -94,7 +95,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                                 />
                             </div>
                             <div className="p-4 w-[30%]">
-                                <table className="table table-xs table-zebra">
+                                <table className="table table-sm table-zebra">
                                     <thead>
                                         <tr>
                                             <th>País</th>

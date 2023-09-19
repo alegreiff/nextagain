@@ -16,7 +16,7 @@ const Datepicker = ({ cambiaFuenteDatos, cambiaDatosMes }: Props) => {
     const [startDate, setStartDate] = useState(new Date());
     const [mes, setMes] = useState(0);
     const [year, setYear] = useState(0);
-    const [defaultSelected, setDefaultSelected] = useState(-1)
+    const [defaultSelected, setDefaultSelected] = useState(1000)
 
     useEffect(() => {
         cambiaDatosMes(year, mes)

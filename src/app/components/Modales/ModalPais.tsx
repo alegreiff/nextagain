@@ -26,32 +26,39 @@ ChartJS.register(
 interface Props {
     datos: Procedencia[]
 }
-export const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'top' as const,
-        },
-        title: {
-            display: true,
-            text: 'Colombia',
-        },
-    },
-};
+
 
 const ModalPais = ({ datos }: Props) => {
+
     const [labels, setLabels] = useState<[]>([])
     const [data, setData] = useState<[]>([])
+    const [nombrePais, setNombrePais] = useState('')
     useEffect(() => {
         const l: any = []
         const d: any = []
+        let pais = ''
         datos.map((dt) => {
             l.push(dt.y + ' - ' + dt.m)
             d.push(dt.s)
+            pais = dt.p
         })
+        setNombrePais(pais)
         setLabels(l)
         setData(d)
     }, [datos])
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top' as const,
+            },
+            title: {
+                display: true,
+                text: nombrePais,
+            },
+        },
+    };
 
     const datax = {
         labels,

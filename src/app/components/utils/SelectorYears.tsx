@@ -10,6 +10,7 @@ interface Props {
 const SelectorYears = ({ valor, defaultSelected }: Props) => {
     const [selected, setSelected] = useState(defaultSelected)
     const valorTotal = 1000
+    console.log("ENTRANDO", defaultSelected)
 
     useEffect(() => {
         //const sel = defaultSelected
@@ -24,10 +25,10 @@ const SelectorYears = ({ valor, defaultSelected }: Props) => {
         <div className='flex flex-row'>
 
             {years.map((y, i) => <button onClick={() => seleccionYear(y)}
-                className={'mr-2 btn btn-ghost ' + (selected === y ? 'btn-active bg-lime-100' : '')}
+                className={'mr-2 btn btn-ghost ' + (selected === y ? 'btn-active bg-lime-400' : '')}
                 key={i}>{y}</button>)}
             <button onClick={() => seleccionYear(valorTotal)}
-                className={'ml-2 btn btn-ghost ' + (selected === valorTotal ? 'btn-active bg-lime-100' : '')}
+                className={'ml-2 btn btn-ghost ' + (selected === valorTotal ? 'btn-active bg-lime-400' : '')}
             >Acumulado</button>
         </div>
     )
