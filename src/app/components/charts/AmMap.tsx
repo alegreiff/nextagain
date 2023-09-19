@@ -108,7 +108,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data.map((res, i) => (
+                                    {data.slice(0, 20).map((res, i) => (
                                         <tr key={i} className="hover">
                                             <td onClick={() => handleToggle(res.country)}>{res.pais} </td>
                                             <td>{res.value} </td>

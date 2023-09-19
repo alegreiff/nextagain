@@ -5,29 +5,43 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
+    BarElement,
+    Title,
     Tooltip,
-    PointElement,
-    LineElement,
+    Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-
+import { Bar } from 'react-chartjs-2';
 
 // Register ChartJS components using ChartJS.register
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
-    Tooltip
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
 );
 
 interface Props {
     datos: Procedencia[]
 }
+export const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: 'top' as const,
+        },
+        title: {
+            display: true,
+            text: 'Colombia',
+        },
+    },
+};
 
 const ModalPais = ({ datos }: Props) => {
-    const [labels, setLabels] = useState([])
-    const [data, setData] = useState([])
+    const [labels, setLabels] = useState<[]>([])
+    const [data, setData] = useState<[]>([])
 
     useEffect(() => {
         const l: any = []
@@ -42,20 +56,22 @@ const ModalPais = ({ datos }: Props) => {
 
     }, [datos])
 
+    const datax = {
+        labels,
+        datasets: [
+            {
+                label: 'Resumen de sesiones mensuales',
+                data: data,
+                backgroundColor: 'rgba(255, 99, 132, 0.8)',
+            },
+
+        ],
+    };
+
 
     return (
 
-        <Line
-            data={{
-                labels: labels,
-                datasets: [
-                    {
-                        data: data,
-                        backgroundColor: "red",
-                    },
-                ],
-            }}
-        />
+        <Bar options={options} data={datax} />
 
     );
 }
