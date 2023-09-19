@@ -90,7 +90,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                                     color="blue"
                                     title="Origen de las visitas"
                                     value-suffix="people"
-                                    size="responsive"
+                                    size="xl"
                                     data={data}
                                 />
                             </div>
