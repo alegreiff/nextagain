@@ -80,21 +80,20 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                     <label className="btn btn-primary" onClick={() => handleToggle('')}>Yay!</label>
                 </div>
             </Modal>
-            <div className="bg-amber-500 p-2">
-                <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
-
-                <div className='m-8 p-8 '>AmMap
+            <div className="bg-amber-500">
+                <div className='m-8 p-8 '>
                     {data &&
                         <div className="flex flex-row">
-                            <WorldMap
-                                color="blue"
-                                title="Origen de las visitas"
-                                value-suffix="people"
-                                size="responsive"
-                                data={data}
-
-                            />
-                            <div className="p-4 w-full">
+                            <div className="w-[70%]">
+                                <WorldMap
+                                    color="blue"
+                                    title="Origen de las visitas"
+                                    value-suffix="people"
+                                    size="responsive"
+                                    data={data}
+                                />
+                            </div>
+                            <div className="p-4 w-[30%]">
                                 <table className="table table-xs table-zebra">
                                     <thead>
                                         <tr>
@@ -115,6 +114,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                         </div>
                     }
                 </div>
+                <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
 
             </div>
         </>

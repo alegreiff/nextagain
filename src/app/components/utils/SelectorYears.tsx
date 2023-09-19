@@ -12,7 +12,7 @@ const SelectorYears = ({ valor, defaultSelected }: Props) => {
     const valorTotal = 1000
 
     useEffect(() => {
-        const sel = defaultSelected
+        //const sel = defaultSelected
         setSelected(defaultSelected)
     }, [defaultSelected])
     const seleccionYear = (val: number) => {
@@ -21,13 +21,13 @@ const SelectorYears = ({ valor, defaultSelected }: Props) => {
 
     }
     return (
-        <div className='flex flex-row mt-2 bg-pink-800'>
+        <div className='flex flex-row'>
 
             {years.map((y, i) => <button onClick={() => seleccionYear(y)}
-                className={'btn_year ' + (selected === y ? 'btn_active' : '')}
+                className={'mr-2 btn btn-ghost ' + (selected === y ? 'btn-active bg-lime-100' : '')}
                 key={i}>{y}</button>)}
             <button onClick={() => seleccionYear(valorTotal)}
-                className={'btn_year btn_accum ' + (selected === valorTotal ? 'btn_active' : '')}
+                className={'ml-2 btn btn-ghost ' + (selected === valorTotal ? 'btn-active bg-lime-100' : '')}
             >Acumulado</button>
         </div>
     )
