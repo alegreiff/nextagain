@@ -42,7 +42,6 @@ export const options = {
 const ModalPais = ({ datos }: Props) => {
     const [labels, setLabels] = useState<[]>([])
     const [data, setData] = useState<[]>([])
-
     useEffect(() => {
         const l: any = []
         const d: any = []
@@ -52,8 +51,6 @@ const ModalPais = ({ datos }: Props) => {
         })
         setLabels(l)
         setData(d)
-
-
     }, [datos])
 
     const datax = {
@@ -64,18 +61,13 @@ const ModalPais = ({ datos }: Props) => {
                 data: data,
                 backgroundColor: 'rgba(255, 99, 132, 0.8)',
             },
-
         ],
     };
-
-
     return (
-
         <Bar options={options} data={datax} />
 
     );
 }
-
 export default ModalPais
 
 

@@ -72,57 +72,57 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
         }
     }
 
-
-
     return (
-        <div>
-
+        <>
             <Modal open={open} onClose={() => handleToggle('')} disableClickOutside>
-
-
-
                 <ModalPais datos={datopais} />
                 <div className="modal-action">
                     <label className="btn btn-primary" onClick={() => handleToggle('')}>Yay!</label>
                 </div>
             </Modal>
-            <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
+            <div className="bg-amber-500 p-2">
+                <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
 
-            <div className='m-8 p-8 '>AmMap
-                {data &&
-                    <div className="flex flex-row">
-                        <WorldMap
-                            color="blue"
-                            title="Origen de las visitas"
-                            value-suffix="people"
-                            size="xxl"
-                            data={data}
+                <div className='m-8 p-8 '>AmMap
+                    {data &&
+                        <div className="flex flex-row">
+                            <WorldMap
+                                color="blue"
+                                title="Origen de las visitas"
+                                value-suffix="people"
+                                size="responsive"
+                                data={data}
 
-                        />
-                        <div className="p-4 w-full">
-                            <table className="table table-xs table-zebra">
-                                <thead>
-                                    <tr>
-                                        <th>País</th>
-                                        <th>Sesiones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {data.slice(0, 20).map((res, i) => (
-                                        <tr key={i} className="hover">
-                                            <td onClick={() => handleToggle(res.country)}>{res.pais} </td>
-                                            <td>{res.value} </td>
+                            />
+                            <div className="p-4 w-full">
+                                <table className="table table-xs table-zebra">
+                                    <thead>
+                                        <tr>
+                                            <th>País</th>
+                                            <th>Sesiones</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {data.slice(0, 20).map((res, i) => (
+                                            <tr key={i} className="hover">
+                                                <td onClick={() => handleToggle(res.country)}>{res.pais} </td>
+                                                <td>{res.value} </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
 
-        </div>
+            </div>
+        </>
     )
 }
 
 export default AmMap
+
+
+
+
