@@ -5,14 +5,31 @@ import Datepicker from "../utils/datepicker"
 import _sumBy from "lodash/sumBy";
 import _orderBy from "lodash/orderBy";
 import _groupBy from "lodash/groupBy";
-import { useState } from "react"
-import MapaChart from "./Map";
+import { useEffect, useState } from "react"
+import Modal from "../Modal";
+import ModalPais from "../Modales/ModalPais";
 interface Props {
     datos: datosMapa[]
     datosCompletos: Procedencia[];
 }
 
 const AmMap = ({ datos, datosCompletos }: Props) => {
+
+    const [open, setOpen] = useState(false);
+    const [datopais, setDatopais] = useState(datosCompletos);
+    const [pais, setPais] = useState('')
+    const handleToggle = (cod: string) => {
+        setOpen((prev) => !prev)
+        setPais(cod)
+    };
+
+    useEffect(() => {
+        const paisData = datosCompletos.filter(dp => dp.c === pais);
+        setDatopais(paisData)
+
+
+    }, [pais])
+
     const [data, setdata] = useState(datos)
 
     const cambiaFuenteDatos = async (val: number) => {
@@ -59,6 +76,16 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
 
     return (
         <div>
+
+            <Modal open={open} onClose={() => handleToggle('')} disableClickOutside>
+
+
+
+                <ModalPais datos={datopais} />
+                <div className="modal-action">
+                    <label className="btn btn-primary" onClick={() => handleToggle('')}>Yay!</label>
+                </div>
+            </Modal>
             <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
 
             <div className='m-8 p-8 '>AmMap
@@ -68,21 +95,11 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                             color="blue"
                             title="Origen de las visitas"
                             value-suffix="people"
-                            size="responsive"
+                            size="xxl"
                             data={data}
 
                         />
                         <div className="p-4 w-full">
-                            <button className="btn" onClick={() => document.getElementById('my_modal_2').showModal()}>open modal</button>
-                            <dialog id="my_modal_2" className="modal">
-                                <div className="modal-box">
-                                    <h3 className="font-bold text-lg">Hello!</h3>
-                                    <p className="py-4">Press ESC key or click outside to close</p>
-                                </div>
-                                <form method="dialog" className="modal-backdrop">
-                                    <button>close</button>
-                                </form>
-                            </dialog>
                             <table className="table table-xs table-zebra">
                                 <thead>
                                     <tr>
@@ -93,7 +110,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                                 <tbody>
                                     {data.map((res, i) => (
                                         <tr key={i} className="hover">
-                                            <td>{res.pais} </td>
+                                            <td onClick={() => handleToggle(res.country)}>{res.pais} </td>
                                             <td>{res.value} </td>
                                         </tr>
                                     ))}
