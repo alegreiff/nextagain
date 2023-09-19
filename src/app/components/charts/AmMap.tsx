@@ -6,6 +6,7 @@ import _sumBy from "lodash/sumBy";
 import _orderBy from "lodash/orderBy";
 import _groupBy from "lodash/groupBy";
 import { useState } from "react"
+import MapaChart from "./Map";
 interface Props {
     datos: datosMapa[]
     datosCompletos: Procedencia[];
@@ -52,10 +53,9 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
             resultado = _orderBy(resultado, ["value"], ["desc"]);
             setdata(resultado)
         }
-
-
-
     }
+
+
 
     return (
         <div>
@@ -73,6 +73,16 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
 
                         />
                         <div className="p-4 w-full">
+                            <button className="btn" onClick={() => document.getElementById('my_modal_2').showModal()}>open modal</button>
+                            <dialog id="my_modal_2" className="modal">
+                                <div className="modal-box">
+                                    <h3 className="font-bold text-lg">Hello!</h3>
+                                    <p className="py-4">Press ESC key or click outside to close</p>
+                                </div>
+                                <form method="dialog" className="modal-backdrop">
+                                    <button>close</button>
+                                </form>
+                            </dialog>
                             <table className="table table-xs table-zebra">
                                 <thead>
                                     <tr>
