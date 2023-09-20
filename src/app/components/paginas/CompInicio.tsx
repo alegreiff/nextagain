@@ -140,10 +140,10 @@ const CompInicio = ({ datosGenerales }: Props) => {
 
             </div>
             <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
-            <div className="bg-pink-200">
+            {/* <div className="bg-pink-200">
                 {JSON.stringify(datosGen)}
-            </div>
-            .
+            </div> */}
+
         </div>
     )
 }
