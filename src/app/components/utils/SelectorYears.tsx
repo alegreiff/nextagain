@@ -10,7 +10,7 @@ interface Props {
 const SelectorYears = ({ valor, defaultSelected }: Props) => {
     const [selected, setSelected] = useState(defaultSelected)
     const valorTotal = 1000
-    console.log("ENTRANDO", defaultSelected)
+    //console.log("ENTRANDO", defaultSelected)
 
     useEffect(() => {
         //const sel = defaultSelected
