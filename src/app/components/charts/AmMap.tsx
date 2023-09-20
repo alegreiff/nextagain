@@ -1,6 +1,6 @@
 'use client'
 import { Procedencia, datosMapa } from "@/models/MetricasApi"
-import { WorldMap } from "react-svg-worldmap"
+
 import Datepicker from "../utils/datepicker"
 import _sumBy from "lodash/sumBy";
 import _orderBy from "lodash/orderBy";
@@ -8,6 +8,7 @@ import _groupBy from "lodash/groupBy";
 import { useEffect, useState } from "react"
 import Modal from "../Modal";
 import ModalPais from "../Modales/ModalPais";
+import MapaSimple from "./MapaSimple";
 interface Props {
     datos: datosMapa[]
     datosCompletos: Procedencia[];
@@ -78,7 +79,12 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
             <Modal open={open} onClose={() => handleToggle('')} disableClickOutside>
                 <ModalPais datos={datopais} />
                 <div className="modal-action">
-                    <label className="btn btn-primary" onClick={() => handleToggle('')}>Yay!</label>
+                    <label className="btn btn-ghost" onClick={() => handleToggle('')}>
+                        <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+
+                    </label>
                 </div>
             </Modal>
             <div className="bg-slate-50">
@@ -86,27 +92,21 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                     {data &&
                         <div className="flex flex-row">
                             <div className="w-[70%]">
-                                <WorldMap
-                                    color="blue"
-                                    title="Origen de las visitas"
-                                    value-suffix="people"
-                                    size="xl"
-                                    data={data}
-                                />
+                                <MapaSimple datosmapa={data} />
                             </div>
                             <div className="p-4 w-[30%]">
                                 <table className="table table-sm table-zebra">
                                     <thead>
                                         <tr>
-                                            <th>País</th>
-                                            <th>Sesiones</th>
+                                            <th className="font-bold text-xl" >País</th>
+                                            <th className="font-bold text-xl">Sesiones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {data.slice(0, 20).map((res, i) => (
                                             <tr key={i} className="hover">
-                                                <td onClick={() => handleToggle(res.country)}>{res.pais} </td>
-                                                <td>{res.value} </td>
+                                                <td className="font-bold cursor-pointer" onClick={() => handleToggle(res.country)}>{res.pais} </td>
+                                                <td className="font-bold">{res.value.toLocaleString('es')} </td>
                                             </tr>
                                         ))}
                                     </tbody>
