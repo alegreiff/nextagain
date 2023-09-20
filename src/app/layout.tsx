@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={inter.className}>
-        <main className="bg-slate-100 p-4 container mx-auto">
+        <main className="bg-slate-100 p-0 container mx-auto">
           <HeaderNavigation />
 
           {children}

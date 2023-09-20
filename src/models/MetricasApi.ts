@@ -10,6 +10,7 @@ export interface MetricAPI {
   paises: string[];
   paginas: Pagina[];
   edades: Edades[];
+  resumen: Resumen[];
 }
 
 export interface Edades {
@@ -51,10 +52,26 @@ export interface ProcedenciaControl {
   c: string;
 }
 
+export interface Resumen {
+  y: number;
+  m: number;
+  re: string | number;
+  pv: number;
+  u: number;
+  s: number;
+}
+
 export interface datosMapa {
   country: string;
   value: number;
   year?: number;
   mes?: number;
   pais?: string;
+}
+
+export interface DatosGenerales {
+  rebote: number;
+  paginas: number;
+  usuarios: number;
+  sesiones: number;
 }

@@ -11,6 +11,16 @@ const loadMetricas = async () => {
   return metricas;
 };
 
+export const generalData = async () => {
+  const geoDatos = await loadMetricas();
+  let salida = geoDatos.resumen;
+  salida = salida.map((dato) => {
+    return { ...dato, re: Number(dato.re) };
+  });
+
+  return salida;
+};
+
 export const geoData = async () => {
   const geoDatos = await loadMetricas();
   return geoDatos.procedencia;

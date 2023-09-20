@@ -1,3 +1,4 @@
+'use client'
 import { datosMapa } from '@/models/MetricasApi'
 import React from 'react'
 import { WorldMap } from "react-svg-worldmap"
