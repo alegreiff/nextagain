@@ -64,10 +64,10 @@ const CompInicio = ({ datosGenerales }: Props) => {
             <div className="stats shadow m-4 flex flex-wrap gap-8 justify-start ">
 
                 {datosGen && <>
-                    <CajaDato datosGen={datosGen?.paginas} />
-                    <CajaDato datosGen={datosGen?.usuarios} />
-                    <CajaDato datosGen={datosGen?.sesiones} />
-                    <CajaDato datosGen={datosGen?.rebote} /></>}
+                    <CajaDato datosGen={datosGen?.paginas} metrica='Páginas vistas' />
+                    <CajaDato datosGen={datosGen?.usuarios} metrica='Usuarios' />
+                    <CajaDato datosGen={datosGen?.sesiones} metrica='Sesiones' />
+                    <CajaDato datosGen={datosGen?.rebote} metrica='Porcentaje de rebote' /></>}
 
 
 

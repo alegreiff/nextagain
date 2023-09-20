@@ -2,10 +2,11 @@ import { DatosGenerales } from '@/models/MetricasApi'
 import React from 'react'
 
 interface Props {
-    datosGen: number
+    datosGen: number,
+    metrica: string
 }
 
-const CajaDato = ({ datosGen }: Props) => {
+const CajaDato = ({ datosGen, metrica }: Props) => {
     console.log(datosGen)
 
     let style = {
@@ -17,7 +18,7 @@ const CajaDato = ({ datosGen }: Props) => {
     return (
         <div className='p-2 m-2 bg-amber-300'>
             <div className="stat bg-lime-300">
-                <div className="stat-title">Total Page Views</div>
+                <div className="stat-title">{metrica}</div>
                 <div className="stat-value">{formatter.format(datosGen)}</div>
                 <div className="stat-desc">21% more than last month</div>
             </div>
