@@ -22,6 +22,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
     const [datosGen, setDatosGen] = useState<DatosGenerales>();
     const [datosGenCompara, setDatosGenCompara] = useState<DatosGenerales>();
     const [tipoDato, setTipoDato] = useState<string>('accum')
+    const [init, setInit] = useState<boolean>(false);
 
     useEffect(() => {
         const numDatos = data.length;
@@ -54,7 +55,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
             const salida: DatosGenerales = { rebote: Number(dataCompara[0].re), paginas: dataCompara[0].pv, usuarios: dataCompara[0].u, sesiones: dataCompara[0].s }
             setDatosGenCompara(salida)
         } else {
-            console.log("KE pazzza Loka", numDatos)
+            //console.log("KE pazzza Loka", numDatos)
 
             setDatosGenCompara({ rebote: 0, paginas: 0, usuarios: 0, sesiones: 0 })
         }
@@ -62,6 +63,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
     }, [dataCompara])
 
     const cambiaFuenteDatos = async (val: number) => {
+        setInit(false)
 
 
 
@@ -100,6 +102,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
 
         if (year > 0 && mes > 0) {
             //console.log(year, mes)
+            setInit(false)
             const salida = datosGenerales.filter((dato) => dato.y === year && dato.m === mes);
             setdata(salida)
             setTipoDato('mes')
@@ -109,6 +112,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
             if (year === 2018 && mes === 1) {
                 setdataCompara([])
                 setTipoDato('accum')
+                setInit(true)
 
             } else if (mes === 1) {
                 mesComp = 12
@@ -137,15 +141,13 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
             <div className="stats shadow m-4 flex flex-wrap gap-8 justify-between">
 
                 {datosGen && <>
-                    <CajaDato compara={datosGenCompara?.paginas ? datosGenCompara?.paginas : 0} datosGen={datosGen?.paginas} tipodato={tipoDato} metrica='Páginas vistas' />
+                    <CajaDato compara={datosGenCompara?.sesiones ? datosGenCompara?.sesiones : 0} datosGen={datosGen?.sesiones} tipodato={tipoDato} metrica='Sesiones' datosglobales={data} initdata={init} />
 
-                    <CajaDato compara={datosGenCompara?.usuarios ? datosGenCompara?.usuarios : 0} datosGen={datosGen?.usuarios} tipodato={tipoDato} metrica='Usuarios' />
+                    <CajaDato compara={datosGenCompara?.usuarios ? datosGenCompara?.usuarios : 0} datosGen={datosGen?.usuarios} tipodato={tipoDato} metrica='Usuarios' datosglobales={data} initdata={init} />
 
-                    <CajaDato compara={datosGenCompara?.sesiones ? datosGenCompara?.sesiones : 0} datosGen={datosGen?.sesiones} tipodato={tipoDato} metrica='Sesiones' />
+                    <CajaDato compara={datosGenCompara?.paginas ? datosGenCompara?.paginas : 0} datosGen={datosGen?.paginas} tipodato={tipoDato} metrica='Páginas vistas' datosglobales={data} initdata={init} />
 
-                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' porcentaje /></>}
-
-
+                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' porcentaje datosglobales={data} initdata={init} /></>}
 
             </div>
 
@@ -156,3 +158,22 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
 }
 
 export default CompInicio
+
+
+
+/* 
+
+Septiembre 20
+vamos en 249
+
+
+Para 340 faltan 91
+Para 380 faltan 131
+
+
+
+
+
+
+
+*/

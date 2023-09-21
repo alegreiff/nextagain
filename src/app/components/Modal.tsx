@@ -24,7 +24,7 @@ const Modal = ({ children, open, disableClickOutside, onClose }: Props) => {
     });
 
     const modalClass = cn({
-        "modal modal-bottom sm:modal-middle": true,
+        "modal modal-bottom sm:modal-top": true,
         "modal-open": open,
     });
     return (
