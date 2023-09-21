@@ -143,7 +143,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
 
                     <CajaDato compara={datosGenCompara?.sesiones ? datosGenCompara?.sesiones : 0} datosGen={datosGen?.sesiones} tipodato={tipoDato} metrica='Sesiones' />
 
-                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' /></>}
+                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' porcentaje /></>}
 
 
 

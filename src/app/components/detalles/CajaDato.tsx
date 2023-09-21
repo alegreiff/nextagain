@@ -5,9 +5,10 @@ interface Props {
     metrica: string
     tipodato: string,
     compara?: number
+    porcentaje?: boolean
 }
 
-const CajaDato = ({ datosGen, metrica, tipodato, compara }: Props) => {
+const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje }: Props) => {
     console.log("KomParA", compara)
     let datoComp = 0
     if (compara) {
@@ -35,7 +36,7 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara }: Props) => {
             <div className="stat bg-white text-[#193d8a]">
 
                 <div className="stat-title">{metrica}</div>
-                <div className="stat-value">{formatter.format(datosGen)}</div>
+                {!porcentaje ? <div className="stat-value">{formatter.format(datosGen)}</div> : <div className="stat-value">{formatter2.format(datosGen)}</div>}
 
 
                 {compara ? <>
