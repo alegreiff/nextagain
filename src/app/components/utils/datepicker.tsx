@@ -4,19 +4,25 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es"; // the locale you want
 import SelectorYears from './SelectorYears';
+import PeriodoVisto from '../detalles/PeriodoVisto';
 
 registerLocale("es", es); // register it with the name you want
 
 interface Props {
     cambiaFuenteDatos: (year: number) => void
     cambiaDatosMes: (year: number, mes: number) => void
+    lastUpdated: number[]
 }
 
-const Datepicker = ({ cambiaFuenteDatos, cambiaDatosMes }: Props) => {
+const Datepicker = ({ cambiaFuenteDatos, cambiaDatosMes, lastUpdated }: Props) => {
     const [startDate, setStartDate] = useState(new Date());
     const [mes, setMes] = useState(0);
     const [year, setYear] = useState(0);
     const [defaultSelected, setDefaultSelected] = useState(1000)
+
+
+
+
 
     useEffect(() => {
         cambiaDatosMes(year, mes)
@@ -43,6 +49,7 @@ const Datepicker = ({ cambiaFuenteDatos, cambiaDatosMes }: Props) => {
         <>
             <div className='block xl:flex justify-between'>
                 <SelectorYears valor={valor} defaultSelected={defaultSelected} />
+                <PeriodoVisto general={defaultSelected} year={year} mes={mes} lastUpdated={lastUpdated} />
                 <DatePicker
                     selected={startDate}
                     onChange={(date) => cambiaFecha(date)}

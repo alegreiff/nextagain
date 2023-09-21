@@ -5,12 +5,18 @@ export interface MetricAPI {
   date: string;
   version: number;
   author: string;
+  constantes: Constantes[];
   procedencia: Procedencia[];
   procedencia_control: ProcedenciaControl[];
   paises: string[];
   paginas: Pagina[];
   edades: Edades[];
   resumen: Resumen[];
+}
+
+export interface Constantes {
+  label: string;
+  value: Array<number | string>;
 }
 
 export interface Edades {

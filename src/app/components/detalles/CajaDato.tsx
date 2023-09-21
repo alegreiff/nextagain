@@ -31,7 +31,7 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara }: Props) => {
 
 
     return (
-        <div className='p-2 m-2 bg-[#193d8a] rounded-sm'>
+        <div className='p-2 m-2 bg-[#193d8a] rounded-sm w-[22%]'>
             <div className="stat bg-white text-[#193d8a]">
 
                 <div className="stat-title">{metrica}</div>

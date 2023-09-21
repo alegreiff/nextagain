@@ -1,15 +1,22 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Datepicker from '../utils/datepicker'
-import { DatosGenerales, Resumen } from '@/models/MetricasApi'
+import { Constantes, DatosGenerales, Resumen } from '@/models/MetricasApi'
 import _avg from "lodash/meanBy";
 import _sumBy from "lodash/sumBy";
 import CajaDato from '../detalles/CajaDato';
+import { last } from 'lodash';
 interface Props {
-    datosGenerales: Resumen[]
+    datosGenerales: Resumen[];
+    constantes: Constantes[]
 }
 
-const CompInicio = ({ datosGenerales }: Props) => {
+const CompInicio = ({ datosGenerales, constantes }: Props) => {
+
+    const yearUpdated = constantes[0].value[1];
+    const mesUpdated = constantes[0].value[0];
+    const lastUpdated: number[] = [Number(mesUpdated), Number(yearUpdated)]
+
     const [data, setdata] = useState<Resumen[]>(datosGenerales)
     const [dataCompara, setdataCompara] = useState<Resumen[]>([])
     const [datosGen, setDatosGen] = useState<DatosGenerales>();
@@ -125,6 +132,8 @@ const CompInicio = ({ datosGenerales }: Props) => {
     return (
         <div className="container mx-auto pb-8">
 
+            <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} lastUpdated={lastUpdated} />
+
             <div className="stats shadow m-4 flex flex-wrap gap-8 justify-between">
 
                 {datosGen && <>
@@ -139,10 +148,8 @@ const CompInicio = ({ datosGenerales }: Props) => {
 
 
             </div>
-            <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
-            {/* <div className="bg-pink-200">
-                {JSON.stringify(datosGen)}
-            </div> */}
+
+
 
         </div>
     )

@@ -21,6 +21,13 @@ export const generalData = async () => {
   return salida;
 };
 
+export const constantesData = async () => {
+  const geoDatos = await loadMetricas();
+  let salida = geoDatos.constantes;
+  console.log("SALEEEE", salida);
+  return salida;
+};
+
 export const geoData = async () => {
   const geoDatos = await loadMetricas();
   return geoDatos.procedencia;

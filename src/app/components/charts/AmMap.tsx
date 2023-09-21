@@ -1,5 +1,5 @@
 'use client'
-import { Procedencia, datosMapa } from "@/models/MetricasApi"
+import { Constantes, Procedencia, datosMapa } from "@/models/MetricasApi"
 
 import Datepicker from "../utils/datepicker"
 import _sumBy from "lodash/sumBy";
@@ -12,10 +12,14 @@ import MapaSimple from "./MapaSimple";
 interface Props {
     datos: datosMapa[]
     datosCompletos: Procedencia[];
+    constantes: Constantes[]
 }
 
-const AmMap = ({ datos, datosCompletos }: Props) => {
+const AmMap = ({ datos, datosCompletos, constantes }: Props) => {
 
+    const yearUpdated = constantes[0].value[1];
+    const mesUpdated = constantes[0].value[0];
+    const lastUpdated: number[] = [Number(mesUpdated), Number(yearUpdated)]
     const [open, setOpen] = useState(false);
     const [datopais, setDatopais] = useState(datosCompletos);
     const [pais, setPais] = useState('')
@@ -88,6 +92,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                 </div>
             </Modal>
             <div className="bg-slate-50">
+                <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} lastUpdated={lastUpdated} />
                 <div className='m-8 p-8 '>
                     {data &&
                         <div className="flex flex-row">
@@ -115,7 +120,7 @@ const AmMap = ({ datos, datosCompletos }: Props) => {
                         </div>
                     }
                 </div>
-                <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} />
+
 
             </div>
         </>
