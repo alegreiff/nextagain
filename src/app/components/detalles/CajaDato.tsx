@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BsGraphUpArrow } from "react-icons/bs";
+import { BsGraphUpArrow, BsFillArrowUpRightCircleFill, BsFillArrowDownLeftCircleFill } from "react-icons/bs";
 import Modal from '../Modal';
 import ModalPais from '../Modales/ModalPais';
 import { DatosGenerales, Resumen } from '@/models/MetricasApi';
@@ -81,13 +81,9 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosgloba
 
 
                     {compara ? <>
-                        <div className={`text-xl font-bold ${datoComp > 0 ? 'text-lime-500' : 'text-red-500'}`}>
-                            {datoComp > 0 ? <svg className="inline w-6 h-6 text-lime-700 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4" />
-                            </svg> : <svg className="inline w-6 h-6 text-re-700 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v12m0 0 4-4m-4 4L1 9" />
-                            </svg>}
-                            {formatter2.format(datoComp)}
+                        <div className={`flex gap-4 text-xl font-bold ${datoComp > 0 ? 'text-lime-500' : 'text-red-500'}`}>
+                            {datoComp > 0 ? <span className='inline'><BsFillArrowUpRightCircleFill size={32} /></span> : <span className='inline'><BsFillArrowDownLeftCircleFill size={32} /></span>}
+                            <span className='text-2xl'>{formatter2.format(datoComp)}</span>
 
                         </div>
                         <span> {!porcentaje ? formatter.format(compara) : formatter2.format(compara)} </span>
