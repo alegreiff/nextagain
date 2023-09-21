@@ -151,8 +151,10 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
                     <CajaDato compara={datosGenCompara?.usuarios ? datosGenCompara?.usuarios : 0} datosGen={datosGen?.usuarios} tipodato={tipoDato} metrica='Usuarios' datosglobales={data} initdata={init} yearactivo={yearactivo} />
 
                     <CajaDato compara={datosGenCompara?.paginas ? datosGenCompara?.paginas : 0} datosGen={datosGen?.paginas} tipodato={tipoDato} metrica='Páginas vistas' datosglobales={data} initdata={init} yearactivo={yearactivo} />
+                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' porcentaje datosglobales={data} initdata={init} yearactivo={yearactivo} />
 
-                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' porcentaje datosglobales={data} initdata={init} yearactivo={yearactivo} /></>}
+                </>
+                }
 
             </div>
 

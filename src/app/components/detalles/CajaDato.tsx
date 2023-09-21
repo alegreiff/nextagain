@@ -62,7 +62,7 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosgloba
                 </div>
             </Modal>
 
-            <div className='p-2 m-2 bg-[#193d8a] rounded-sm w-[22%]'>
+            <div className='p-2 m-2 bg-[#193d8a] rounded-sm w-auto'>
 
                 <div className="stat bg-white text-[#193d8a]">
 
@@ -73,7 +73,7 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosgloba
                         {!porcentaje ? formatter.format(datosGen) : formatter2.format(datosGen)}
 
                         {tipodato != 'mes' && initdata === false ?
-                            <span onClick={() => handleToggle('kio')} className='text-[#193d8a] cursor-pointer hover:bg-[#193d8a] hover:text-white' ><BsGraphUpArrow /></span>
+                            <span onClick={() => handleToggle('kio')} className='text-[#193d8a] ml-8 cursor-pointer hover:bg-[#193d8a] hover:text-white' ><BsGraphUpArrow /></span>
                             : ''}
 
                     </div>
