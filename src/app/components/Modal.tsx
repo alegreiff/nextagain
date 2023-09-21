@@ -24,13 +24,13 @@ const Modal = ({ children, open, disableClickOutside, onClose }: Props) => {
     });
 
     const modalClass = cn({
-        "modal modal-bottom sm:modal-top": true,
+        "modal modal-bottom sm:modal-middle  ": true,
         "modal-open": open,
     });
     return (
         <div className={modalClass}>
 
-            <div className=" min-w-[50%] modal-box" ref={ref}>
+            <div className=" min-w-[50%]  modal-box" ref={ref}>
                 {children}
             </div>
 

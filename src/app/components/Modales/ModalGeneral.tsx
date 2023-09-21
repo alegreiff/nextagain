@@ -24,7 +24,8 @@ ChartJS.register(
 
 interface Props {
     metrica: string,
-    datos: Resumen[]
+    datos: Resumen[],
+    periodo: string | number
 }
 
 export const valores = [
@@ -36,7 +37,7 @@ export const valores = [
 ]
 
 
-const ModalGeneral = ({ metrica, datos }: Props) => {
+const ModalGeneral = ({ metrica, datos, periodo }: Props) => {
 
     const [abbr, setAbbr] = useState<string>('')
     useEffect(() => {
@@ -73,7 +74,7 @@ const ModalGeneral = ({ metrica, datos }: Props) => {
                     d.push(dt.pv)
                     break;
                 default:
-                    console.log("La hemos cagado")
+                    console.log("Problema de variable no encontrada")
             }
         })
         setNombreDato(metrica)
@@ -98,7 +99,7 @@ const ModalGeneral = ({ metrica, datos }: Props) => {
         labels,
         datasets: [
             {
-                label: 'Resumen de sesiones mensuales',
+                label: `Resumen de ${nombreDato}  mensuales ${periodo === 1000 ? 'acumulado' : periodo}`,
                 data: data,
                 backgroundColor: 'rgba(255, 99, 132, 0.8)',
             },

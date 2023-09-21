@@ -12,9 +12,10 @@ interface Props {
     porcentaje?: boolean,
     datosglobales?: Resumen[]
     initdata: boolean
+    yearactivo: number;
 }
 
-const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosglobales, initdata }: Props) => {
+const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosglobales, initdata, yearactivo }: Props) => {
     /* console.log("KomParA", compara) */
     console.log({ initdata })
 
@@ -50,7 +51,7 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosgloba
     return (
         <>
             <Modal open={open} onClose={() => handleToggle('')} disableClickOutside>
-                <ModalGeneral metrica={metrica} datos={datosglobales!} />
+                <ModalGeneral metrica={metrica} datos={datosglobales!} periodo={yearactivo} />
                 <div className="modal-action">
                     <label className="btn btn-ghost" onClick={() => handleToggle('')}>
                         <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -62,6 +63,7 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosgloba
             </Modal>
 
             <div className='p-2 m-2 bg-[#193d8a] rounded-sm w-[22%]'>
+
                 <div className="stat bg-white text-[#193d8a]">
 
                     <div className="stat-title">{metrica}</div>

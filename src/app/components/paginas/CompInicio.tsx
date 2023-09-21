@@ -23,6 +23,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
     const [datosGenCompara, setDatosGenCompara] = useState<DatosGenerales>();
     const [tipoDato, setTipoDato] = useState<string>('accum')
     const [init, setInit] = useState<boolean>(false);
+    const [yearactivo, setYearactivo] = useState<number>(1000)
 
     useEffect(() => {
         const numDatos = data.length;
@@ -72,18 +73,21 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
             setdata(datosGenerales)
             setdataCompara([])
             setTipoDato('accum')
+            setYearactivo(1000)
         } else if (val === 2018) {
             //console.log(val)
             const salida = datosGenerales.filter((dato) => dato.y === val);
             setdata(salida)
             setdataCompara([])
             setTipoDato('accum')
+            setYearactivo(val)
 
 
         } else {
+            setYearactivo(val)
             let yearComp = val
             yearComp = yearComp - 1
-            console.log("CUANDO LLEGO A LLEAR", val)
+            /* console.log("CUANDO LLEGO A LLEAR", val) */
 
             const salida = datosGenerales.filter((dato) => dato.y === val);
             setdata(salida)
@@ -99,6 +103,7 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
     }
 
     const cambiaDatosMes = async (year: number, mes: number) => {
+        setYearactivo(year)
 
         if (year > 0 && mes > 0) {
             //console.log(year, mes)
@@ -141,13 +146,13 @@ const CompInicio = ({ datosGenerales, constantes }: Props) => {
             <div className="stats shadow m-4 flex flex-wrap gap-8 justify-between">
 
                 {datosGen && <>
-                    <CajaDato compara={datosGenCompara?.sesiones ? datosGenCompara?.sesiones : 0} datosGen={datosGen?.sesiones} tipodato={tipoDato} metrica='Sesiones' datosglobales={data} initdata={init} />
+                    <CajaDato compara={datosGenCompara?.sesiones ? datosGenCompara?.sesiones : 0} datosGen={datosGen?.sesiones} tipodato={tipoDato} metrica='Sesiones' datosglobales={data} initdata={init} yearactivo={yearactivo} />
 
-                    <CajaDato compara={datosGenCompara?.usuarios ? datosGenCompara?.usuarios : 0} datosGen={datosGen?.usuarios} tipodato={tipoDato} metrica='Usuarios' datosglobales={data} initdata={init} />
+                    <CajaDato compara={datosGenCompara?.usuarios ? datosGenCompara?.usuarios : 0} datosGen={datosGen?.usuarios} tipodato={tipoDato} metrica='Usuarios' datosglobales={data} initdata={init} yearactivo={yearactivo} />
 
-                    <CajaDato compara={datosGenCompara?.paginas ? datosGenCompara?.paginas : 0} datosGen={datosGen?.paginas} tipodato={tipoDato} metrica='Páginas vistas' datosglobales={data} initdata={init} />
+                    <CajaDato compara={datosGenCompara?.paginas ? datosGenCompara?.paginas : 0} datosGen={datosGen?.paginas} tipodato={tipoDato} metrica='Páginas vistas' datosglobales={data} initdata={init} yearactivo={yearactivo} />
 
-                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' porcentaje datosglobales={data} initdata={init} /></>}
+                    <CajaDato compara={datosGenCompara?.rebote ? datosGenCompara?.rebote : 0} datosGen={datosGen?.rebote} tipodato={tipoDato} metrica='Porcentaje de rebote' porcentaje datosglobales={data} initdata={init} yearactivo={yearactivo} /></>}
 
             </div>
 
