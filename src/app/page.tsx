@@ -14,6 +14,9 @@ export default async function Home() {
 
   return (
 
-    <CompInicio datosGenerales={datosGenerales} constantes={constantes} />
+    <>
+
+      <CompInicio datosGenerales={datosGenerales} constantes={constantes} />
+    </>
   )
 }

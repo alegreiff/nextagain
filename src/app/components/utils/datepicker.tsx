@@ -58,7 +58,7 @@ const Datepicker = ({ cambiaFuenteDatos, cambiaDatosMes, lastUpdated }: Props) =
                     locale={es}
                     inline
                     minDate={new Date('01/01/2018')}
-                    maxDate={new Date('08/30/2023')}
+                    maxDate={new Date('09/01/2023')}
                 />
             </div>
         </>

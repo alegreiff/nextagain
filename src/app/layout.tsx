@@ -20,6 +20,7 @@ export default function RootLayout({
 
       <body className={inter.className}>
         <main className="bg-slate-100 p-0 container mx-auto">
+
           <HeaderNavigation />
 
           {children}
