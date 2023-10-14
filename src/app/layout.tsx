@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={inter.className}>
+      <body className={inter.className} data-theme="mytheme">
         <main className="bg-slate-100 p-0 container mx-auto">
 
           <HeaderNavigation />

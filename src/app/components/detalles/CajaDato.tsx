@@ -73,10 +73,15 @@ const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosgloba
                         {!porcentaje ? formatter.format(datosGen) : formatter2.format(datosGen)}
 
                         {tipodato != 'mes' && initdata === false ?
-                            <span onClick={() => handleToggle('kio')} className='text-metricas-azul ml-8 cursor-pointer hover:bg-metricas-azul hover:text-white' ><BsGraphUpArrow /></span>
+                            <span
+                                data-tip="Ver gráfico"
+                                onClick={() => handleToggle('kio')} className='text-metricas-azul ml-8 cursor-pointer hover:bg-metricas-azul hover:text-white tooltip  tooltip-info' >
+                                <div><BsGraphUpArrow /></div>
+                            </span>
                             : ''}
 
                     </div>
+
 
 
 

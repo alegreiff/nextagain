@@ -7,6 +7,31 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    daisyui: {
+      themes: [
+        {
+          mytheme: {
+            primary: "#d0db59",
+
+            secondary: "#b1f257",
+
+            accent: "#24e588",
+
+            neutral: "#38273a",
+
+            "base-100": "#4e464e",
+
+            info: "#5192c8",
+
+            success: "#2ac06b",
+
+            warning: "#98560b",
+
+            error: "#e75f7d",
+          },
+        },
+      ],
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
