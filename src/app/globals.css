@@ -32,3 +32,6 @@ body {
 .react-datepicker__month-text {
   @apply text-sky-600 font-bold text-xl capitalize;
 }
+.active {
+  @apply bg-sky-600;
+}

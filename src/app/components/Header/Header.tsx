@@ -1,11 +1,23 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 const HeaderNavigation = () => {
+
+    const [activo, setActivo] = useState(0);
+
+    const cambiaEnlace = (boton: number) => {
+        setActivo(boton)
+
+    }
+
+
     return (
         <div className='bg-metricas-azul p-4 text-2xl text-white font-bold flex justify-start'>
-            <Link className="btn btn-ghost p-1 m-1" href="/">Datos de interés</Link>
-            <Link className="btn btn-ghost p-1 m-1" href="/users/leaf">Visitas</Link>
+            <Link onClick={() => { cambiaEnlace(0) }} className={activo === 0 ? 'btn btn-ghost p-4 m-1 active' : 'btn btn-ghost p-1 m-1'} href="/">Datos de interés</Link>
+            <Link onClick={() => { cambiaEnlace(1) }} className={activo === 1 ? 'btn btn-ghost p-4 m-1 active' : 'btn btn-ghost p-1 m-1'} href="/users/leaf"> Visitas</Link>
+            <Link onClick={() => { cambiaEnlace(2) }} className={activo === 2 ? 'btn btn-ghost p-4 m-1 active' : 'btn btn-ghost p-1 m-1'} href="/"> Usuarios</Link>
+            <Link onClick={() => { cambiaEnlace(3) }} className={activo === 3 ? 'btn btn-ghost p-4 m-1 active' : 'btn btn-ghost p-1 m-1'} href="/"> Contenidos más vistos</Link>
 
             {/* <Link className="btn btn-ghost p-1 m-1" href="/users/mapa">Mapa</Link>
             <Link className="btn btn-ghost p-1 m-1" href="/users">Usuarios</Link>

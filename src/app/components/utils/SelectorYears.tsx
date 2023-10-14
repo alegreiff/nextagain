@@ -29,7 +29,7 @@ const SelectorYears = ({ valor, defaultSelected }: Props) => {
                 key={i}>{y}</button>)}
             <button onClick={() => seleccionYear(valorTotal)}
                 className={'ml-2 btn btn-ghost ' + (selected === valorTotal ? 'btn-active bg-lime-400' : '')}
-            >Acumulado</button>
+            >Histórico</button>
         </div>
     )
 }
