@@ -16,6 +16,15 @@ export interface MetricAPI {
   genero: Genero[];
   tecno: Tecno[];
   listaidiomas: ListaIdiomas[];
+  adqui: Adquisicion[];
+}
+
+export interface Adquisicion {
+  y: number;
+  m: number;
+  canal: string;
+  u: number; //usuarios
+  s: number; //sesiones
 }
 
 export interface ListaIdiomas {
@@ -33,6 +42,18 @@ export interface DatoEdades {
 }
 
 export interface DatoGenero {
+  rango: string;
+  sesiones: number;
+  usuarios: number;
+}
+
+export interface DatoTecno {
+  rango: string;
+  sesiones: number;
+  usuarios: number;
+}
+
+export interface DatoAdquis {
   rango: string;
   sesiones: number;
   usuarios: number;

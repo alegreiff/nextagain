@@ -16,6 +16,16 @@ export const getEdades = async () => {
   return datos.edades;
 };
 
+export const getTecno = async () => {
+  const datos = await loadMetricas();
+  return datos.tecno;
+};
+
+export const getAdquis = async () => {
+  const datos = await loadMetricas();
+  return datos.adqui;
+};
+
 export const getIdiomas = async () => {
   const datos = await loadMetricas();
   return datos.idiomas;

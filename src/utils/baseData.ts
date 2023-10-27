@@ -27,6 +27,12 @@ export const rangosGenero = [
   { id: 2, rango: "male" },
 ];
 
+export const rangosTecno = [
+  { id: 1, rango: "desktop" },
+  { id: 2, rango: "mobile" },
+  { id: 3, rango: "tablet" },
+];
+
 export const rangosAdqui = [
   { id: 1, rango: "Direct" },
   { id: 2, rango: "Organic Search" },
