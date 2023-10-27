@@ -1,6 +1,6 @@
 import CompUsuarios from '@/app/components/Usuarios/CompUsuarios';
 import { Constantes, Edades, Genero, Idiomas, ListaIdiomas } from '@/models/MetricasApi';
-import { constantesData, getEdades, getGenero, getIdiomas, getListaIdiomas, getidiomas } from '@/utils/metricas'
+import { constantesData, getEdades, getGenero, getIdiomas, getListaIdiomas } from '@/utils/metricas'
 import React from 'react'
 
 const pageUsuarios = async () => {
