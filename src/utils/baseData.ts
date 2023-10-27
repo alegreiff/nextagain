@@ -26,11 +26,19 @@ export const rangosGenero = [
   { id: 1, rango: "female" },
   { id: 2, rango: "male" },
 ];
+
+export const rangosAdqui = [
+  { id: 1, rango: "Direct" },
+  { id: 2, rango: "Organic Search" },
+  { id: 3, rango: "Referral" },
+  { id: 4, rango: "Social" },
+  { id: 5, rango: "(Other)" },
+];
+
 /* 
-Año inicial
-Año máximo
-Mes inicial
-Mes máximo
+
+
+
 
 
 
