@@ -12,11 +12,36 @@ export interface MetricAPI {
   paginas: Pagina[];
   edades: Edades[];
   resumen: Resumen[];
+  idiomas: Idiomas[];
+  genero: Genero[];
+  tecno: Tecno[];
+  listaidiomas: ListaIdiomas[];
+}
+
+export interface ListaIdiomas {
+  id: string;
 }
 
 export interface Constantes {
   label: string;
   value: Array<number | string>;
+}
+
+export interface DatoEdades {
+  rango: string;
+  sesiones: number;
+}
+
+export interface DatoGenero {
+  rango: string;
+  sesiones: number;
+  usuarios: number;
+}
+
+export interface DatoIdioma {
+  rango: string;
+  sesiones: number;
+  usuarios: number;
 }
 
 export interface Edades {
@@ -35,11 +60,34 @@ export enum Rango {
   The65 = "65+",
 }
 
+export interface Tecno {
+  y: number;
+  m: number;
+  tecno: string;
+  u: number; //usuarios
+  s: number; //sesiones
+}
+
+export interface Genero {
+  y: number;
+  m: number;
+  genero: string;
+  u: number; //usuarios
+  s: number; //sesiones
+}
+
 export interface Pagina {
   y: number;
   m: number;
   p: string;
   pv: number;
+}
+export interface Idiomas {
+  y: number;
+  m: number;
+  idioma: string;
+  u: number; //usuarios
+  s: number; //sesiones
 }
 
 export interface Procedencia {

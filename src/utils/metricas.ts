@@ -11,6 +11,26 @@ const loadMetricas = async () => {
   return metricas;
 };
 
+export const getEdades = async () => {
+  const datos = await loadMetricas();
+  return datos.edades;
+};
+
+export const getIdiomas = async () => {
+  const datos = await loadMetricas();
+  return datos.idiomas;
+};
+
+export const getListaIdiomas = async () => {
+  const datos = await loadMetricas();
+  return datos.listaidiomas;
+};
+
+export const getGenero = async () => {
+  const datos = await loadMetricas();
+  return datos.genero;
+};
+
 export const generalData = async () => {
   const geoDatos = await loadMetricas();
   let salida = geoDatos.resumen;

@@ -17,7 +17,7 @@ interface Props {
 
 const CajaDato = ({ datosGen, metrica, tipodato, compara, porcentaje, datosglobales, initdata, yearactivo }: Props) => {
     /* console.log("KomParA", compara) */
-    console.log({ initdata })
+    //console.log({ initdata })
 
     const [open, setOpen] = useState(false);
     const handleToggle = (cod: string) => {

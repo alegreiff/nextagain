@@ -74,7 +74,7 @@ const ModalGeneral = ({ metrica, datos, periodo }: Props) => {
                     d.push(dt.pv)
                     break;
                 default:
-                    console.log("Problema de variable no encontrada")
+                    console.log("No viene ninguna variable")
             }
         })
         setNombreDato(metrica)
@@ -109,7 +109,7 @@ const ModalGeneral = ({ metrica, datos, periodo }: Props) => {
 
     return (
         <>
-            {abbr} {metrica}
+            <div className='bg-lime-200 p-4 m-4'> {abbr} {metrica}  </div>
             <Bar options={options} data={datax} />
         </>
     )

@@ -40,8 +40,8 @@ const Datepicker = ({ cambiaFuenteDatos, cambiaDatosMes, lastUpdated }: Props) =
     const valor = (val: number) => {
         setDefaultSelected(val)
         if (val >= 1000) {
-            setMes(0)
-            setYear(0)
+            /* setMes(0)
+            setYear(0) */
             cambiaFuenteDatos(val)
         }
     }

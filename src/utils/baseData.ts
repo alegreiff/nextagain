@@ -13,12 +13,28 @@ export const meses = [
   { id: 11, mes: "noviembre" },
   { id: 12, mes: "diciembre" },
 ];
+export const rangosEdad = [
+  { id: 1, rango: "18-24" },
+  { id: 2, rango: "25-34" },
+  { id: 3, rango: "35-44" },
+  { id: 4, rango: "45-54" },
+  { id: 5, rango: "55-64" },
+  { id: 6, rango: "65+" },
+];
 
+export const rangosGenero = [
+  { id: 1, rango: "female" },
+  { id: 2, rango: "male" },
+];
 /* 
 Año inicial
 Año máximo
 Mes inicial
 Mes máximo
+
+
+
+
 */
 
 /*
