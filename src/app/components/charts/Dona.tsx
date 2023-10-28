@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
+//import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
+//ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface Props {
     datos1: number[],
