@@ -1,67 +1,24 @@
 import React, { useState } from 'react'
-import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
-
+import { Chart } from 'react-google-charts'
 
 interface Props {
     datos1: number[],
     datos2: number[],
-    //labels: string[],
+    labels: string[],
+    datosGraphSesiones: {} | any[],
+    datosGraphUsuarios: {} | any[],
+
 }
 
-const Dona = ({ datos1, datos2 }: Props) => {
+const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios }: Props) => {
     const [activo, setActivo] = useState('sesiones')
 
-    const data = {
-
-        labels: ['female', 'male'],
-        datasets: [
-            {
-                /* datalabels: {
-                    labels: {
-                        title: {
-                            color: 'whitesmoke',
-                            textAlign: 'center',
-                            formatter: function (value: number, ctx: Context) {
-                                var index = ctx.dataIndex;
-                                var label = ctx.chart.data.labels![index];
-                                return label + '\n' + value.toLocaleString();
-                            },
-                            font: {
-                                weight: 'bold',
-                                size: 26,
-                            }
-                        },
-                    }
-                }, */
-                label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
-                data: activo === 'sesiones' ? datos1 : datos2,
-                /* options: {
-                    rotation: 48
-                }, */
-                backgroundColor: [
-                    'rgba(231, 76, 60, 0.8)',
-                    'rgba(42, 128, 184, 0.8)',
-
-                ],
-                hoverBackgroundColor: [
-                    'rgba(231, 76, 60, 0.7)',
-                    'rgba(42, 128, 184, 0.7)',],
-                borderColor: [
-                    'rgba(231, 76, 60, 1)',
-                    'rgba(42, 128, 184, 1)',
-
-                ],
-                borderWidth: 4,
-
-            },
-
-        ],
-
+    const options = {
+        title: `Reporte por ${activo}`,
+        pieHole: 0.4,
+        is3D: false,
+        colors: ['#ec7063', '#5dade2']
     };
-
     const cambia = () => {
         if (activo === 'sesiones') {
             setActivo('usuarios')
@@ -73,27 +30,42 @@ const Dona = ({ datos1, datos2 }: Props) => {
 
     return (
         <>
-            {datos1.length > 0 && datos2.length > 0 ? <div>
+            {datos1.length > 0 && datos2.length > 0 && labels.length > 0 ? <div>
 
                 <div className="card w-[80%] bg-base-100 shadow-xl">
-                    <h2 className="p-4 card-title text-2xl text-center">Género</h2>
-                    <h3 className='p-4 text-xl font-bold'>Reporte por {activo}</h3>
-                    {/* @ts-ignore: Unreachable code error */}
-                    <figure className='p-8'>    <Doughnut data={data} /></figure>
+                    <h2 className="p-4 card-title text-2xl text-center"> Género</h2>
+
+
+                    <figure className='bg-amber-400 w-full'>
+
+                        <Chart
+                            chartType="PieChart"
+                            width={"100%"}
+                            height={"500px"}
+
+                            data={
+                                activo === 'sesiones' ? datosGraphSesiones : datosGraphUsuarios
+                            }
+                            options={options}
+                        />
+
+                    </figure>
                     <div className="card-body">
 
 
                         <div className="card-actions justify-end">
                             <button className='btn mr-4' onClick={cambia}>
-                                {activo === 'sesiones' ? 'Ver Usuarios' : 'Ver sesiones'}
+                                {activo === 'sesiones' ? 'Ver usuarios' : 'Ver sesiones'}
                             </button>
 
-                            <table className=" bg-white table table-xs table-zebra">
+                            <hr />
+                            <table className="bg-white table table-xs table-zebra">
                                 <thead>
                                     <tr>
                                         <th>Métrica</th>
-                                        <th>female</th>
-                                        <th>male</th>
+                                        {labels.map((l, i) => (
+                                            <th key={i}>{l}</th>
+                                        ))}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -115,8 +87,6 @@ const Dona = ({ datos1, datos2 }: Props) => {
                             </table>
                         </div>
                     </div>
-
-
 
                 </div>
 
