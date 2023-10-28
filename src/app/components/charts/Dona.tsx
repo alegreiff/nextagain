@@ -14,7 +14,7 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
     const [activo, setActivo] = useState('sesiones')
     const data = {
 
-        labels: labels,
+        labels: ['casa', 'perro'],
         datasets: [
             {
                 /* datalabels: {
