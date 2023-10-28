@@ -69,18 +69,22 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
                 label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
                 data: activo === 'sesiones' ? datos1 : datos2,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(231, 76, 60, 0.8)',
+                    'rgba(42, 128, 184, 0.8)',
 
                 ],
+                hoverBackgroundColor: ['rgba(231, 76, 60, 0.4)',
+                    'rgba(42, 128, 184, 0.4)',],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
+                    'rgba(231, 76, 60, 1)',
+                    'rgba(42, 128, 184, 1)',
 
                 ],
                 borderWidth: 1,
             },
+
         ],
+
     };
     const cambia = () => {
         if (activo === 'sesiones') {
