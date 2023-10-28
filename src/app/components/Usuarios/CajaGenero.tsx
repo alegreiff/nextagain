@@ -65,7 +65,8 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
 
     console.log(datos1, datos2)
     const data = {
-        labels: labels,
+        //labels: labels,
+        labels: ['female', 'male'],
         datasets: [
             {
                 label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
