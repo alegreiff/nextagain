@@ -68,17 +68,26 @@ const CompUsuarios = ({ datosEdades, constantes, datosGenero, datosIdiomas, list
             <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} lastUpdated={lastUpdated} />
 
 
-            <CajaAdqui datosAdqui={datosAdquis} tipo={tipo} year={year} mes={mes} />
+            <div className="flex container mx-auto">
+                <div className="bg-sky-50 p-4 w-1/2">
+                    <CajaGenero datosGenero={datosGenero} tipo={tipo} year={year} mes={mes} />
+                </div>
+                <div className="bg-amber-700 w-1/2">
+                    <CajaEdades datosEdades={datosEdades} tipo={tipo} year={year} mes={mes} />
+                </div>
+            </div>
+
+            {/* <CajaAdqui datosAdqui={datosAdquis} tipo={tipo} year={year} mes={mes} />
             <CajaTecno datosTecno={datosTecno} tipo={tipo} year={year} mes={mes} />
-            <CajaEdades datosEdades={datosEdades} tipo={tipo} year={year} mes={mes} />
-
-            <CajaGenero datosGenero={datosGenero} tipo={tipo} year={year} mes={mes} />
-
-            <CajaIdioma datosIdiomas={datosIdiomas} tipo={tipo} year={year} mes={mes} listaIdiomas={listaIdiomas} />
 
 
-            <h3>Los users</h3>
-            {JSON.stringify(constantes)}
+
+
+            <CajaIdioma datosIdiomas={datosIdiomas} tipo={tipo} year={year} mes={mes} listaIdiomas={listaIdiomas} /> */}
+
+
+            {/* <h3>Los users</h3>
+            {JSON.stringify(constantes)} */}
 
 
 

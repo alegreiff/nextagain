@@ -22,20 +22,7 @@ const pageUsuarios = async () => {
                 datosTecno={datosTecno}
                 datosAdquis={datosAdquis}
             />
-            <div className='bg-red-100 text-4xl'>
 
-                ¿Qué va en usuarios?
-                <ol>
-                    <li>- Idiomas</li>
-                    <li>- Tecnología</li>
-                    <li>- Adquisición</li>
-                    <li>- Género  </li>
-                    <li>- Edad  </li>
-
-
-                </ol>
-
-            </div>
         </>
     )
 }
