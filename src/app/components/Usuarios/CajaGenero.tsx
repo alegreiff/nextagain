@@ -20,7 +20,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
 
     const [datoGenero, setDatoGenero] = useState(datosGenero);
     const [generoDatos, setGeneroDatos] = useState<DatoGenero[]>();
-    const [labels, setLabels] = useState<string[]>([]);
+    //const [labels, setLabels] = useState<string[]>([]);
     const [datos1, setDatos1] = useState<number[]>([]);
     const [datos2, setDatos2] = useState<number[]>([]);
     const [activo, setActivo] = useState('sesiones')
@@ -36,7 +36,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
             datos = datos.filter(dato => dato.m === mes)
         }
         let salida: DatoGenero[] = []
-        let labels = [];
+        //let labels = [];
         let datos1 = [];
         let datos2 = [];
         for (let i = 0; i < rangos.length; i++) {
@@ -47,7 +47,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
                 salida.push(
                     { rango: rangos[i].rango, sesiones, usuarios }
                 )
-                labels.push(rangos[i].rango)
+                //labels.push(rangos[i].rango)
                 datos1.push(sesiones)
                 datos2.push(usuarios)
 
@@ -55,7 +55,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
 
 
         }
-        setLabels(labels)
+        //setLabels(labels)
         setDatos1(datos1)
         setDatos2(datos2)
         setDatoGenero(datos)
