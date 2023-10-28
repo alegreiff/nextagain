@@ -12,13 +12,13 @@ interface Props {
 
 const Dona = ({ datos1, datos2 }: Props) => {
     const [activo, setActivo] = useState('sesiones')
-    const labels = ['agua', 'pan']
+    const labels = ['female', 'male']
     const data = {
 
         labels: labels,
         datasets: [
             {
-                /* datalabels: {
+                datalabels: {
                     color: 'blue',
                     labels: {
                         title: {
@@ -35,7 +35,7 @@ const Dona = ({ datos1, datos2 }: Props) => {
                             }
                         },
                     }
-                }, */
+                },
                 label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
                 data: activo === 'sesiones' ? datos1 : datos2,
                 /* options: {
