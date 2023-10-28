@@ -77,7 +77,7 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
 
                 <div className="card w-[80%] bg-base-100 shadow-xl">
                     <h2 className="p-4 card-title text-2xl text-center">Género</h2>
-
+                    {/* @ts-ignore: Unreachable code error */}
                     <figure>    <Doughnut data={data} /></figure>
                     <div className="card-body">
 
