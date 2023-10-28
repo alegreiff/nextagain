@@ -31,7 +31,7 @@ const Dona = ({ datos1, datos2 }: Props) => {
                             },
                             font: {
                                 weight: 'bold',
-                                size: 32,
+                                size: 26,
                             }
                         },
                     }
@@ -76,9 +76,10 @@ const Dona = ({ datos1, datos2 }: Props) => {
             {datos1.length > 0 && datos2.length > 0 && labels.length > 0 ? <div>
 
                 <div className="card w-[80%] bg-base-100 shadow-xl">
-                    <h2 className="p-4 card-title text-2xl text-center">The Género</h2>
+                    <h2 className="p-4 card-title text-2xl text-center">Género</h2>
+                    <h3 className='p-4 text-xl font-bold'>Reporte por {activo}</h3>
                     {/* @ts-ignore: Unreachable code error */}
-                    <figure>    <Doughnut data={data} /></figure>
+                    <figure className='p-8'>    <Doughnut data={data} /></figure>
                     <div className="card-body">
 
 
@@ -86,36 +87,38 @@ const Dona = ({ datos1, datos2 }: Props) => {
                             <button className='btn mr-4' onClick={cambia}>
                                 {activo === 'sesiones' ? 'Ver Usuarios' : 'Ver sesiones'}
                             </button>
+
+                            <table className=" bg-white table table-xs table-zebra">
+                                <thead>
+                                    <tr>
+                                        <th>Métrica</th>
+                                        {labels.map((l, i) => (
+                                            <th key={i}>{l}</th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Sesiones</th>
+                                        {datos1.map((d, i) => (
+                                            <td key={i}>{d.toLocaleString()}</td>
+                                        ))}
+                                    </tr>
+                                    <tr>
+                                        <th>Usuarios</th>
+                                        {datos2.map((d, i) => (
+                                            <td key={i}>{d.toLocaleString()}</td>
+                                        ))}
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
                         </div>
                     </div>
-                    <div className='bg-red-400'>
-                        <table className="bg-white table table-xs table-zebra">
-                            <thead>
-                                <tr>
-                                    <th>Métrica</th>
-                                    {labels.map((l, i) => (
-                                        <th key={i}>{l}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>Sesiones</th>
-                                    {datos1.map((d, i) => (
-                                        <td key={i}>{d}</td>
-                                    ))}
-                                </tr>
-                                <tr>
-                                    <th>Usuarios</th>
-                                    {datos2.map((d, i) => (
-                                        <td key={i}>{d}</td>
-                                    ))}
-                                </tr>
 
-                            </tbody>
 
-                        </table>
-                    </div>
+
                 </div>
 
             </div> : <div>Sin información para este periodo</div>}
