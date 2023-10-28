@@ -69,7 +69,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
     const size = datoGenero.length;
     return (
         <>
-            <Dona datos1={datos1} datos2={datos2} />
+            {/* <Dona datos1={datos1} datos2={datos2} /> */}
             {/* <div className='bg-pink-700 p-8'>
                 <span>YEAR:  {year} </span>
                 <span>MES:  {mes} </span>
