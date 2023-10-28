@@ -2,12 +2,11 @@ import { DatoGenero, Genero } from '@/models/MetricasApi'
 import { rangosGenero } from '@/utils/baseData'
 import React, { useEffect, useState } from 'react'
 import _sumBy from "lodash/sumBy";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+
 import Dona from '../charts/Dona';
 
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 
 interface Props {
@@ -63,40 +62,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
         setGeneroDatos(salida)
     }, [datosGenero, year, mes, rangos])
 
-    console.log(datos1, datos2)
-    const data = {
-        //labels: labels,
-        labels: ['female', 'male'],
-        datasets: [
-            {
-                label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
-                data: activo === 'sesiones' ? datos1 : datos2,
-                backgroundColor: [
-                    'rgba(231, 76, 60, 0.8)',
-                    'rgba(42, 128, 184, 0.8)',
 
-                ],
-                hoverBackgroundColor: ['rgba(231, 76, 60, 0.4)',
-                    'rgba(42, 128, 184, 0.4)',],
-                borderColor: [
-                    'rgba(231, 76, 60, 1)',
-                    'rgba(42, 128, 184, 1)',
-
-                ],
-                borderWidth: 1,
-            },
-
-        ],
-
-    };
-    const cambia = () => {
-        if (activo === 'sesiones') {
-            setActivo('usuarios')
-        } else {
-            setActivo('sesiones')
-        }
-
-    }
 
 
 
