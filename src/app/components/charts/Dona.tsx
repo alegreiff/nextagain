@@ -74,40 +74,56 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
     return (
         <>
             {datos1.length > 0 && datos2.length > 0 ? <div>
-                <div className='block xl:flex p-4'>
-                    <Doughnut data={data} />
-                </div>
-                <button className='btn mr-4' onClick={cambia}>
-                    {activo === 'sesiones' ? 'Ver Usuarios' : 'Ver sesiones'}
-                </button>
-                <div className="overflow-x-auto">
-                    <table className="bg-white table table-xs table-zebra">
-                        <thead>
-                            <tr>
-                                <th>Métrica</th>
-                                {labels.map((l, i) => (
-                                    <th key={i}>{l}</th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>Sesiones</th>
-                                {datos1.map((d, i) => (
-                                    <td key={i}>{d}</td>
-                                ))}
-                            </tr>
-                            <tr>
-                                <th>Usuarios</th>
-                                {datos2.map((d, i) => (
-                                    <td key={i}>{d}</td>
-                                ))}
-                            </tr>
 
-                        </tbody>
+                <div className="card w-[80%] bg-base-100 shadow-xl">
+                    <h2 className="p-4 card-title text-2xl text-center">Género</h2>
 
-                    </table>
+                    <figure>    <Doughnut data={data} /></figure>
+                    <div className="card-body">
+
+
+                        <div className="card-actions justify-end">
+                            <button className='btn mr-4' onClick={cambia}>
+                                {activo === 'sesiones' ? 'Ver Usuarios' : 'Ver sesiones'}
+                            </button>
+                        </div>
+                    </div>
+                    <div className='bg-red-400'>
+                        <table className="bg-white table table-xs table-zebra">
+                            <thead>
+                                <tr>
+                                    <th>Métrica</th>
+                                    {labels.map((l, i) => (
+                                        <th key={i}>{l}</th>
+                                    ))}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Sesiones</th>
+                                    {datos1.map((d, i) => (
+                                        <td key={i}>{d}</td>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    <th>Usuarios</th>
+                                    {datos2.map((d, i) => (
+                                        <td key={i}>{d}</td>
+                                    ))}
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
                 </div>
+
+
+
+
+
+
+
 
             </div> : <div>Sin información para este periodo</div>}
         </>
