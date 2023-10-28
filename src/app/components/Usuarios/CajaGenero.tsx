@@ -103,6 +103,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
     const size = datoGenero.length;
     return (
         <>
+            <Dona datos1={datos1} datos2={datos2} />
             {/* <div className='bg-pink-700 p-8'>
                 <span>YEAR:  {year} </span>
                 <span>MES:  {mes} </span>
@@ -111,20 +112,9 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
             <pre>
                 {JSON.stringify(generoDatos, undefined, 2)}
             </pre> */}
-            {datos1.length > 0 && datos2.length > 0 ? <div>
-                <div className='block xl:flex p-4'>
-
-                    {/* <Doughnut data={data} /> */}
-                    <Dona datos1={datos1} datos2={datos2} />
 
 
-                </div>
-                <button className='btn mr-4' onClick={cambia}>
-                    {activo === 'sesiones' ? 'Ver Usuarios' : 'Ver sesiones'}
-                </button>
-            </div> : <div>Sin información para este periodo</div>}
-
-            {JSON.stringify(generoDatos, undefined, 2)}
+            {/* {JSON.stringify(generoDatos, undefined, 2)} */}
         </>
     )
 }
