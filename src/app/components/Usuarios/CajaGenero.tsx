@@ -4,12 +4,9 @@ import React, { useEffect, useState } from 'react'
 import _sumBy from "lodash/sumBy";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
 
 
-
-
-ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 interface Props {
@@ -67,49 +64,24 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
 
     console.log(datos1, datos2)
     const data = {
-
         labels: labels,
         datasets: [
             {
-                datalabels: {
-                    color: 'blue',
-                    labels: {
-                        title: {
-                            color: 'whitesmoke',
-                            textAlign: 'center',
-                            formatter: function (value: number, ctx: Context) {
-                                var index = ctx.dataIndex;
-                                var label = ctx.chart.data.labels![index];
-                                return label + '\n' + value.toLocaleString();
-                            },
-                            font: {
-                                weight: 'bold',
-                                size: 32,
-                            }
-                        },
-
-                    }
-                },
                 label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
                 data: activo === 'sesiones' ? datos1 : datos2,
-                options: {
-                    rotation: 48
-                },
                 backgroundColor: [
                     'rgba(231, 76, 60, 0.8)',
                     'rgba(42, 128, 184, 0.8)',
 
                 ],
-                hoverBackgroundColor: [
-                    'rgba(231, 76, 60, 0.7)',
-                    'rgba(42, 128, 184, 0.7)',],
+                hoverBackgroundColor: ['rgba(231, 76, 60, 0.4)',
+                    'rgba(42, 128, 184, 0.4)',],
                 borderColor: [
                     'rgba(231, 76, 60, 1)',
                     'rgba(42, 128, 184, 1)',
 
                 ],
-                borderWidth: 4,
-
+                borderWidth: 1,
             },
 
         ],
@@ -140,7 +112,6 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
             {datos1.length > 0 && datos2.length > 0 ? <div>
                 <div className='block xl:flex p-4'>
 
-                    {/* @ts-ignore: Unreachable code error */}
                     <Doughnut data={data} />
 
 
