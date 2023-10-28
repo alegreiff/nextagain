@@ -12,10 +12,10 @@ interface Props {
 
 const Dona = ({ datos1, datos2 }: Props) => {
     const [activo, setActivo] = useState('sesiones')
-    const labels = ['female', 'male']
+
     const data = {
 
-        labels: labels,
+        labels: ['female', 'male'],
         datasets: [
             {
                 datalabels: {
@@ -73,7 +73,7 @@ const Dona = ({ datos1, datos2 }: Props) => {
 
     return (
         <>
-            {datos1.length > 0 && datos2.length > 0 && labels.length > 0 ? <div>
+            {datos1.length > 0 && datos2.length > 0 ? <div>
 
                 <div className="card w-[80%] bg-base-100 shadow-xl">
                     <h2 className="p-4 card-title text-2xl text-center">Género</h2>
