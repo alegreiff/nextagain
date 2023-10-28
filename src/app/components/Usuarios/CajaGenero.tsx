@@ -2,7 +2,14 @@ import { DatoGenero, Genero } from '@/models/MetricasApi'
 import { rangosGenero } from '@/utils/baseData'
 import React, { useEffect, useState } from 'react'
 import _sumBy from "lodash/sumBy";
-import Dona from '../charts/Dona';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
+
+
+
+
+ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 
 interface Props {
@@ -19,7 +26,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
     const [labels, setLabels] = useState<string[]>([]);
     const [datos1, setDatos1] = useState<number[]>([]);
     const [datos2, setDatos2] = useState<number[]>([]);
-
+    const [activo, setActivo] = useState('sesiones')
 
     const rangos = rangosGenero;
 
@@ -59,8 +66,63 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
     }, [datosGenero, year, mes, rangos])
 
     console.log(datos1, datos2)
+    const data = {
 
+        labels: labels,
+        datasets: [
+            {
+                datalabels: {
+                    color: 'blue',
+                    labels: {
+                        title: {
+                            color: 'whitesmoke',
+                            textAlign: 'center',
+                            formatter: function (value: number, ctx: Context) {
+                                var index = ctx.dataIndex;
+                                var label = ctx.chart.data.labels![index];
+                                return label + '\n' + value.toLocaleString();
+                            },
+                            font: {
+                                weight: 'bold',
+                                size: 32,
+                            }
+                        },
 
+                    }
+                },
+                label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
+                data: activo === 'sesiones' ? datos1 : datos2,
+                options: {
+                    rotation: 48
+                },
+                backgroundColor: [
+                    'rgba(231, 76, 60, 0.8)',
+                    'rgba(42, 128, 184, 0.8)',
+
+                ],
+                hoverBackgroundColor: [
+                    'rgba(231, 76, 60, 0.7)',
+                    'rgba(42, 128, 184, 0.7)',],
+                borderColor: [
+                    'rgba(231, 76, 60, 1)',
+                    'rgba(42, 128, 184, 1)',
+
+                ],
+                borderWidth: 4,
+
+            },
+
+        ],
+
+    };
+    const cambia = () => {
+        if (activo === 'sesiones') {
+            setActivo('usuarios')
+        } else {
+            setActivo('sesiones')
+        }
+
+    }
 
 
 
@@ -75,10 +137,19 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
             <pre>
                 {JSON.stringify(generoDatos, undefined, 2)}
             </pre> */}
+            {datos1.length > 0 && datos2.length > 0 ? <div>
+                <div className='block xl:flex p-4'>
 
-            <Dona datos1={datos1} datos2={datos2} labels={labels} />
+                    <Doughnut data={data} />
 
 
+                </div>
+                <button className='btn mr-4' onClick={cambia}>
+                    {activo === 'sesiones' ? 'Ver Usuarios' : 'Ver sesiones'}
+                </button>
+            </div> : <div>Sin información para este periodo</div>}
+
+            {JSON.stringify(generoDatos, undefined, 2)}
         </>
     )
 }

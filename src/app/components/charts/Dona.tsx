@@ -37,9 +37,9 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
                 }, */
                 label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
                 data: activo === 'sesiones' ? datos1 : datos2,
-                options: {
+                /* options: {
                     rotation: 48
-                },
+                }, */
                 backgroundColor: [
                     'rgba(231, 76, 60, 0.8)',
                     'rgba(42, 128, 184, 0.8)',
