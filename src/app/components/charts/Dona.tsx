@@ -18,8 +18,7 @@ const Dona = ({ datos1, datos2 }: Props) => {
         labels: ['female', 'male'],
         datasets: [
             {
-                datalabels: {
-                    color: 'blue',
+                /* datalabels: {
                     labels: {
                         title: {
                             color: 'whitesmoke',
@@ -35,7 +34,7 @@ const Dona = ({ datos1, datos2 }: Props) => {
                             }
                         },
                     }
-                },
+                }, */
                 label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
                 data: activo === 'sesiones' ? datos1 : datos2,
                 /* options: {
