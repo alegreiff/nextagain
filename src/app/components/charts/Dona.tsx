@@ -92,9 +92,8 @@ const Dona = ({ datos1, datos2 }: Props) => {
                                 <thead>
                                     <tr>
                                         <th>Métrica</th>
-                                        {labels.map((l, i) => (
-                                            <th key={i}>{l}</th>
-                                        ))}
+                                        <th>female</th>
+                                        <th>male</th>
                                     </tr>
                                 </thead>
                                 <tbody>
