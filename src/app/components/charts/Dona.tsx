@@ -7,11 +7,12 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 interface Props {
     datos1: number[],
     datos2: number[],
-    labels: string[],
+    //labels: string[],
 }
 
-const Dona = ({ datos1, datos2, labels }: Props) => {
+const Dona = ({ datos1, datos2 }: Props) => {
     const [activo, setActivo] = useState('sesiones')
+    const labels = ['agua', 'pan']
     const data = {
 
         labels: labels,

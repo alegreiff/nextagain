@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import _sumBy from "lodash/sumBy";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import Dona from '../charts/Dona';
 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -113,6 +114,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
                 <div className='block xl:flex p-4'>
 
                     <Doughnut data={data} />
+                    <Dona datos1={datos1} datos2={datos2} />
 
 
                 </div>
