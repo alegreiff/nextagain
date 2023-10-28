@@ -140,6 +140,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
             {datos1.length > 0 && datos2.length > 0 ? <div>
                 <div className='block xl:flex p-4'>
 
+                    {/* @ts-ignore: Unreachable code error */}
                     <Doughnut data={data} />
 
 
