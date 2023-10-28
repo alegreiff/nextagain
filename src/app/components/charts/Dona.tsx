@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { th } from 'date-fns/locale';
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 interface Props {
@@ -117,13 +116,6 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
                         </table>
                     </div>
                 </div>
-
-
-
-
-
-
-
 
             </div> : <div>Sin información para este periodo</div>}
         </>
