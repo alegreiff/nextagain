@@ -77,6 +77,8 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
             </pre> */}
 
             <Dona datos1={datos1} datos2={datos2} labels={labels} />
+            <Dona datos1={datos1} datos2={datos2} labels={labels} />
+            <Dona datos1={datos1} datos2={datos2} labels={labels} />
 
         </>
     )

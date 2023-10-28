@@ -17,7 +17,7 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
         labels: labels,
         datasets: [
             {
-                datalabels: {
+                /* datalabels: {
                     color: 'blue',
                     labels: {
                         title: {
@@ -34,7 +34,7 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
                             }
                         },
                     }
-                },
+                }, */
                 label: activo === 'sesiones' ? 'Número de sesiones' : 'Número de usuarios',
                 data: activo === 'sesiones' ? datos1 : datos2,
                 options: {
@@ -75,7 +75,7 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
             {datos1.length > 0 && datos2.length > 0 ? <div>
 
                 <div className="card w-[80%] bg-base-100 shadow-xl">
-                    <h2 className="p-4 card-title text-2xl text-center">Género</h2>
+                    <h2 className="p-4 card-title text-2xl text-center">The Género</h2>
                     {/* @ts-ignore: Unreachable code error */}
                     <figure>    <Doughnut data={data} /></figure>
                     <div className="card-body">
