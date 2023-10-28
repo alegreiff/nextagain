@@ -14,7 +14,7 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
     const [activo, setActivo] = useState('sesiones')
     const data = {
 
-        labels: ['casa', 'perro'],
+        labels: labels,
         datasets: [
             {
                 /* datalabels: {
@@ -72,7 +72,7 @@ const Dona = ({ datos1, datos2, labels }: Props) => {
 
     return (
         <>
-            {datos1.length > 0 && datos2.length > 0 ? <div>
+            {datos1.length > 0 && datos2.length > 0 && labels.length > 0 ? <div>
 
                 <div className="card w-[80%] bg-base-100 shadow-xl">
                     <h2 className="p-4 card-title text-2xl text-center">The Género</h2>
