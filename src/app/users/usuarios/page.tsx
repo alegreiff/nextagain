@@ -11,6 +11,7 @@ const pageUsuarios = async () => {
     const datosAdquis: Adquisicion[] = await getAdquis();
     const constantes: Constantes[] = await constantesData();
     const listaIdiomas: ListaIdiomas[] = await getListaIdiomas();
+
     return (
         <>
             <CompUsuarios

@@ -24,7 +24,10 @@ export const meses = [
 
 
 const PeriodoVisto = ({ general, year, mes, lastUpdated }: Props) => {
-    //console.log(meses[0])
+    console.log("GENERAL", general)
+    console.log("YEAR", year)
+    console.log("MES", mes)
+    console.log("LASTUPDATED", lastUpdated)
     const elmes = (val: number) => {
         const mes = val - 1;
         return meses[mes].mes
@@ -32,11 +35,11 @@ const PeriodoVisto = ({ general, year, mes, lastUpdated }: Props) => {
     }
     return (
         <div className='bg-slate-100 w-[400px] p-4'>
-            {mes === 0 && year === 0 && general === 1000 ?
+            {general === 1000 ?
 
                 <>
                     Viendo el reporte acumulado hasta {elmes(lastUpdated[0])} de {lastUpdated[1]}
-                </> : mes === 0 && year === 0 ?
+                </> : general > 1000 ?
                     <>
                         Viendo el reporte de {general}.
                     </> :

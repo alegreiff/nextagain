@@ -16,6 +16,11 @@ export const getEdades = async () => {
   return datos.edades;
 };
 
+export const getPaginas = async () => {
+  const datos = await loadMetricas();
+  return datos.paginas;
+};
+
 export const getTecno = async () => {
   const datos = await loadMetricas();
   return datos.tecno;

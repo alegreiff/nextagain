@@ -1,11 +1,19 @@
+
+import CompPaginas from '@/app/components/paginas/Comppaginas';
+import type { Constantes, Pagina } from '@/models/MetricasApi'
+import { constantesData, getPaginas } from '@/utils/metricas'
 import React from 'react'
 
-const pageContenidos = () => {
-    return (
-        <div className='bg-pink-400 text-white text-4xl'>
-            <p>1_url contenidos más vistos </p>
+const pageContenidos = async () => {
+    const paginas: Pagina[] = await getPaginas();
+    const constantes: Constantes[] = await constantesData();
 
-        </div>
+
+    return (
+
+
+        <CompPaginas paginas={paginas} constantes={constantes} />
+
     )
 }
 
