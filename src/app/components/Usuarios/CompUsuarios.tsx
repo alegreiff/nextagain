@@ -75,6 +75,9 @@ const CompUsuarios = ({ datosEdades, constantes, datosGenero, datosIdiomas, list
                 <div className="bg-sky-50 p-4 w-1/3">
                     <CajaTecno datosTecno={datosTecno} tipo={tipo} year={year} mes={mes} />
                 </div>
+                <div className="bg-sky-50 p-4 w-1/3">
+                    <CajaIdioma datosIdiomas={datosIdiomas} tipo={tipo} year={year} mes={mes} listaIdiomas={listaIdiomas} />
+                </div>
 
             </div>
             <div className="block  xl:flex container mx-auto">
@@ -92,7 +95,7 @@ const CompUsuarios = ({ datosEdades, constantes, datosGenero, datosIdiomas, list
 
 
 
-            <CajaIdioma datosIdiomas={datosIdiomas} tipo={tipo} year={year} mes={mes} listaIdiomas={listaIdiomas} />
+
 
 
             {/* <h3>Los users</h3>

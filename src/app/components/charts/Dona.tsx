@@ -1,3 +1,5 @@
+import { DatoIdioma } from '@/models/MetricasApi';
+import { tr } from 'date-fns/locale';
 import React, { useState } from 'react'
 import { Chart } from 'react-google-charts'
 
@@ -9,10 +11,11 @@ interface Props {
     datosGraphUsuarios?: {} | any[],
     titulo: string;
     tipo: string;
+    listaidiomas?: DatoIdioma[];
 
 }
 
-const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, titulo, tipo }: Props) => {
+const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, titulo, tipo, listaidiomas }: Props) => {
     const [activo, setActivo] = useState('sesiones')
 
     const options = {
@@ -50,9 +53,9 @@ const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, 
                         options={options}
                     /> : tipo === 'barras' ? <Chart chartType="ColumnChart" width="100%" height="300px" data={datosGraphSesiones}
 
-                    /> : <Chart chartType="ColumnChart" width="100%" height="300px" data={activo === 'sesiones' ? datosGraphSesiones : datosGraphUsuarios}
+                    /> : tipo === 'barras2' ? <Chart chartType="ColumnChart" width="100%" height="300px" data={activo === 'sesiones' ? datosGraphSesiones : datosGraphUsuarios}
 
-                    />}
+                    /> : ""}
 
 
 
@@ -72,7 +75,7 @@ const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, 
                                     <hr />
                                 </>
                             )}
-                            <table className="bg-white table table-xs table-zebra">
+                            {tipo != 'tabla' ? <table className="bg-white table table-xs table-zebra">
                                 <thead>
                                     <tr>
                                         <th>Métrica</th>
@@ -97,7 +100,29 @@ const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, 
 
                                 </tbody>
 
-                            </table>
+                            </table> : <table className="bg-white table table-xs table-zebra">
+                                <thead>
+                                    <tr>
+                                        <th>Idioma</th>
+                                        <th>Sesiones</th>
+                                        <th>Usuarios</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    {listaidiomas && listaidiomas.map((li, i) => (
+                                        i < 20 && <tr key={i}>
+                                            <td>{li.rango}</td>
+                                            <td>{li.sesiones.toLocaleString()}</td>
+                                            <td>{li.usuarios.toLocaleString()}</td>
+                                        </tr>
+                                    ))}
+
+
+                                </tbody>
+
+                            </table>}
                         </div>
                     </div>
 
