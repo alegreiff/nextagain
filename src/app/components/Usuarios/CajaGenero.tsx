@@ -21,6 +21,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
 
     const [datoGenero, setDatoGenero] = useState(datosGenero);
     const [generoDatos, setGeneroDatos] = useState<DatoGenero[]>();
+
     const [labels, setLabels] = useState<string[]>([]);
     const [datos1, setDatos1] = useState<number[]>([]);
     const [datos2, setDatos2] = useState<number[]>([]);
@@ -43,7 +44,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
         let datos1 = [];
         let datos2 = [];
         let graphSesiones: [[string, number | string]] = [["Género", "sesiones"]];
-        let graphUsuarios: [[string, number | string]] = [["Género", "sesiones"]];
+        let graphUsuarios: [[string, number | string]] = [["Género", "usuarios"]];
         for (let i = 0; i < rangos.length; i++) {
             let resultado = datos.filter(dato => dato.genero === rangos[i].rango)
             let sesiones = _sumBy(resultado, 's')
@@ -86,35 +87,16 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
 
     //const size = datoGenero.length;
     return (
-        <>
-            <Dona
-                datos1={datos1}
-                datos2={datos2}
-                labels={labels}
-                datosGraphSesiones={datosGraphSesiones}
-                datosGraphUsuarios={datosGraphUsuarios}
-            />
 
-            {/* <button className='btn' onClick={cambia}>
-                {activo === 'sesiones' ? 'ver usuarios' : 'ver sesiones'}
-            </button> */}
-            {/* <pre>{JSON.stringify(datos1, undefined, 2)}</pre>
-            <pre>{JSON.stringify(datos2, undefined, 2)}</pre>
-            <pre>{JSON.stringify(labels, undefined, 2)}</pre>
-            <pre>{JSON.stringify(datosGraphSesiones, undefined, 2)}</pre> */}
-            {/* <Dona datos1={datos1} datos2={datos2} /> */}
-            {/* <div className='bg-pink-700 p-8'>
-                <span>YEAR:  {year} </span>
-                <span>MES:  {mes} </span>
-                Caja Gender - SIZE: {size} -TIPO:  {tipo}
-            </div>
-            <pre>
-                {JSON.stringify(generoDatos, undefined, 2)}
-            </pre> */}
+        <Dona
+            datos1={datos1}
+            datos2={datos2}
+            labels={labels}
+            datosGraphSesiones={datosGraphSesiones}
+            datosGraphUsuarios={datosGraphUsuarios}
+            titulo={'Género'}
+        />
 
-
-            {/* {JSON.stringify(generoDatos, undefined, 2)} */}
-        </>
     )
 }
 

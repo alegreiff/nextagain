@@ -2,6 +2,7 @@ import { DatoTecno, Tecno } from '@/models/MetricasApi'
 import { rangosTecno } from '@/utils/baseData'
 import React, { useEffect, useState } from 'react'
 import _sumBy from "lodash/sumBy";
+import Dona from '../charts/Dona';
 
 interface Props {
     datosTecno: Tecno[]
@@ -14,6 +15,15 @@ const CajaTecno = ({ datosTecno, year, mes, tipo }: Props) => {
 
     const [datoTecno, setDatoTecno] = useState(datosTecno);
     const [tecnoDatos, setTecnoDatos] = useState<DatoTecno[]>();
+
+    const [labels, setLabels] = useState<string[]>([]);
+    const [datos1, setDatos1] = useState<number[]>([]);
+    const [datos2, setDatos2] = useState<number[]>([]);
+    const [activo, setActivo] = useState('sesiones')
+    const [datosGraphSesiones, setDatosGraphSesiones] = useState<{} | any[]>([]);
+    const [datosGraphUsuarios, setDatosGraphUsuarios] = useState<{} | any[]>([]);
+
+
     const rangos = rangosTecno;
     useEffect(() => {
         let datos = datosTecno;
@@ -24,6 +34,14 @@ const CajaTecno = ({ datosTecno, year, mes, tipo }: Props) => {
             datos = datos.filter(dato => dato.m === mes)
         }
         let salida: DatoTecno[] = []
+
+        let labels = [];
+        let datos1 = [];
+        let datos2 = [];
+        let graphSesiones: [[string, number | string]] = [["Género", "sesiones"]];
+        let graphUsuarios: [[string, number | string]] = [["Género", "usuarios"]];
+
+
         for (let i = 0; i < rangos.length; i++) {
             let resultado = datos.filter(dato => dato.tecno === rangos[i].rango)
             let sesiones = _sumBy(resultado, 's')
@@ -32,24 +50,32 @@ const CajaTecno = ({ datosTecno, year, mes, tipo }: Props) => {
                 salida.push(
                     { rango: rangos[i].rango, sesiones, usuarios }
                 )
+                labels.push(rangos[i].rango)
+                datos1.push(sesiones)
+                datos2.push(usuarios)
+                graphSesiones.push([rangos[i].rango, sesiones])
+                graphUsuarios.push([rangos[i].rango, usuarios])
             }
         }
+        setDatosGraphSesiones(graphSesiones)
+        setDatosGraphUsuarios(graphUsuarios)
+        setLabels(labels)
+        setDatos1(datos1)
+        setDatos2(datos2)
         setDatoTecno(datos)
         setTecnoDatos(salida)
     }, [datosTecno, year, mes, rangos])
 
     const size = datoTecno.length;
     return (
-        <>
-            <div className='bg-teal-700 p-8'>
-                <span>YEAR:  {year} </span>
-                <span>MES:  {mes} </span>
-                Caja Tecnología - SIZE: {size} -TIPO:  {tipo}
-            </div>
-            <pre>
-                {JSON.stringify(tecnoDatos, undefined, 2)}
-            </pre>
-        </>
+        <Dona
+            datos1={datos1}
+            datos2={datos2}
+            labels={labels}
+            datosGraphSesiones={datosGraphSesiones}
+            datosGraphUsuarios={datosGraphUsuarios}
+            titulo={'Tecnología'}
+        />
     )
 }
 

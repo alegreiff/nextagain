@@ -7,17 +7,18 @@ interface Props {
     labels: string[],
     datosGraphSesiones: {} | any[],
     datosGraphUsuarios: {} | any[],
+    titulo: string;
 
 }
 
-const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios }: Props) => {
+const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, titulo }: Props) => {
     const [activo, setActivo] = useState('sesiones')
 
     const options = {
         title: `Reporte por ${activo}`,
         pieHole: 0.4,
         is3D: false,
-        colors: ['#ec7063', '#5dade2']
+        colors: ['#ec7063', '#5dade2', '#f39c12']
     };
     const cambia = () => {
         if (activo === 'sesiones') {
@@ -25,31 +26,30 @@ const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios }
         } else {
             setActivo('sesiones')
         }
-
     }
 
     return (
         <>
             {datos1.length > 0 && datos2.length > 0 && labels.length > 0 ? <div>
 
-                <div className="card w-[80%] bg-base-100 shadow-xl">
-                    <h2 className="p-4 card-title text-2xl text-center"> Género</h2>
+                <div className="card w-[100%] bg-base-100 shadow-xl">
+                    <h2 className="p-4 card-title text-2xl text-center"> {titulo}</h2>
 
 
-                    <figure className='bg-amber-400 w-full'>
 
-                        <Chart
-                            chartType="PieChart"
-                            width={"100%"}
-                            height={"500px"}
 
-                            data={
-                                activo === 'sesiones' ? datosGraphSesiones : datosGraphUsuarios
-                            }
-                            options={options}
-                        />
+                    <Chart
+                        chartType="PieChart"
+                        width={"100%"}
+                        height={"500px"}
 
-                    </figure>
+                        data={
+                            activo === 'sesiones' ? datosGraphSesiones : datosGraphUsuarios
+                        }
+                        options={options}
+                    />
+
+
                     <div className="card-body">
 
 

@@ -69,21 +69,24 @@ const CompUsuarios = ({ datosEdades, constantes, datosGenero, datosIdiomas, list
 
 
             <div className="flex container mx-auto">
-                <div className="bg-sky-50 p-4 w-1/2">
+                <div className="bg-sky-50 p-4 w-1/3">
                     <CajaGenero datosGenero={datosGenero} tipo={tipo} year={year} mes={mes} />
                 </div>
-                <div className="bg-amber-700 w-1/2">
+                <div className="bg-sky-50 p-4 w-1/3">
+                    <CajaTecno datosTecno={datosTecno} tipo={tipo} year={year} mes={mes} />
+                </div>
+                <div className="bg-amber-700 w-1/3">
                     <CajaEdades datosEdades={datosEdades} tipo={tipo} year={year} mes={mes} />
                 </div>
             </div>
 
-            {/* <CajaAdqui datosAdqui={datosAdquis} tipo={tipo} year={year} mes={mes} />
-            <CajaTecno datosTecno={datosTecno} tipo={tipo} year={year} mes={mes} />
+            <CajaAdqui datosAdqui={datosAdquis} tipo={tipo} year={year} mes={mes} />
 
 
 
 
-            <CajaIdioma datosIdiomas={datosIdiomas} tipo={tipo} year={year} mes={mes} listaIdiomas={listaIdiomas} /> */}
+
+            <CajaIdioma datosIdiomas={datosIdiomas} tipo={tipo} year={year} mes={mes} listaIdiomas={listaIdiomas} />
 
 
             {/* <h3>Los users</h3>
