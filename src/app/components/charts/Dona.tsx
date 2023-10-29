@@ -128,7 +128,28 @@ const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, 
 
                 </div>
 
-            </div> : <div>Sin información para este periodo</div>}
+            </div> :
+                <div className="card w-auto bg-base-100 shadow-xl">
+                    <h2 className="p-4 card-title text-2xl text-center"> {titulo}</h2>
+
+
+
+
+
+
+
+
+
+                    <div className="card-body">
+
+
+                        <div className="card-actions justify-end">
+
+                            <p>Sin información obtenida para este periodo</p>
+                        </div>
+                    </div>
+
+                </div>}
         </>
     )
 }
