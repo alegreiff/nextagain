@@ -1,5 +1,5 @@
 
-import CompPaginas from '@/app/components/paginas/Comppaginas';
+import CompPaginas from '@/app/components/paginas/CompPaginas';
 import type { Constantes, Pagina } from '@/models/MetricasApi'
 import { constantesData, getPaginas } from '@/utils/metricas'
 import React from 'react'
