@@ -68,19 +68,25 @@ const CompUsuarios = ({ datosEdades, constantes, datosGenero, datosIdiomas, list
             <Datepicker cambiaFuenteDatos={cambiaFuenteDatos} cambiaDatosMes={cambiaDatosMes} lastUpdated={lastUpdated} />
 
 
-            <div className="flex container mx-auto">
+            <div className="block  xl:flex container mx-auto">
                 <div className="bg-sky-50 p-4 w-1/3">
                     <CajaGenero datosGenero={datosGenero} tipo={tipo} year={year} mes={mes} />
                 </div>
                 <div className="bg-sky-50 p-4 w-1/3">
                     <CajaTecno datosTecno={datosTecno} tipo={tipo} year={year} mes={mes} />
                 </div>
-                <div className="bg-sky-50 p-4 w-1/3">
+
+            </div>
+            <div className="block  xl:flex container mx-auto">
+                <div className="bg-sky-50 p-4 w-1/2">
                     <CajaEdades datosEdades={datosEdades} tipo={tipo} year={year} mes={mes} />
+                </div>
+                <div className="bg-sky-50 p-4 w-1/2">
+                    <CajaAdqui datosAdqui={datosAdquis} tipo={tipo} year={year} mes={mes} />
                 </div>
             </div>
 
-            <CajaAdqui datosAdqui={datosAdquis} tipo={tipo} year={year} mes={mes} />
+
 
 
 

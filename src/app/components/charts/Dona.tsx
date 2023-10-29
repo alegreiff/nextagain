@@ -29,32 +29,28 @@ const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, 
         }
     }
 
-    const data = [
-        ["Element", "Density", { role: "style" }],
-        ["Copper", 8.94, "#b87333"], // RGB value
-        ["Silver", 10.49, "silver"], // English color name
-        ["Gold", 19.3, "gold"],
-        ["Platinum", 21.45, "color: #e5e4e2"], // CSS-style declaration
-    ];
+
 
     return (
         <>
             {datos1.length > 0 && labels.length > 0 ? <div>
 
-                <div className="card w-[100%] bg-base-100 shadow-xl">
+                <div className="card w-auto bg-base-100 shadow-xl">
                     <h2 className="p-4 card-title text-2xl text-center"> {titulo}</h2>
 
 
                     {tipo === 'pie' ? <Chart
                         chartType="PieChart"
                         width={"100%"}
-                        height={"500px"}
+                        height={"300px"}
 
                         data={
                             activo === 'sesiones' ? datosGraphSesiones : datosGraphUsuarios
                         }
                         options={options}
-                    /> : <Chart chartType="ColumnChart" width="100%" height="400px" data={datosGraphSesiones}
+                    /> : tipo === 'barras' ? <Chart chartType="ColumnChart" width="100%" height="300px" data={datosGraphSesiones}
+
+                    /> : <Chart chartType="ColumnChart" width="100%" height="300px" data={activo === 'sesiones' ? datosGraphSesiones : datosGraphUsuarios}
 
                     />}
 
@@ -67,9 +63,9 @@ const Dona = ({ datos1, datos2, labels, datosGraphSesiones, datosGraphUsuarios, 
 
 
                         <div className="card-actions justify-end">
-                            {tipo === 'pie' && (
+                            {(tipo === 'pie' || tipo === 'barras2') && (
                                 <>
-                                    <button className='btn mr-4' onClick={cambia}>
+                                    <button className='btn' onClick={cambia}>
                                         {activo === 'sesiones' ? 'Ver usuarios' : 'Ver sesiones'}
                                     </button>
 
