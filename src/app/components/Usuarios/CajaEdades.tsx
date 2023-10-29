@@ -4,6 +4,7 @@ import _groupBy from "lodash/groupBy";
 import _each from "lodash/each";
 import _sumBy from "lodash/sumBy";
 import { rangosEdad } from '@/utils/baseData';
+import Dona from '../charts/Dona';
 
 interface Props {
     datosEdades: Edades[];
@@ -16,9 +17,18 @@ const CajaEdades = ({ datosEdades, year, mes, tipo }: Props) => {
 
     const [datosEdad, setDatosEdad] = useState(datosEdades);
     const [edadDatos, setEdadDatos] = useState<DatoEdades[]>()
+    const [labels, setLabels] = useState<string[]>([]);
+    const [datos1, setDatos1] = useState<number[]>([]);
+
+
+    const [datosGraphSesiones, setDatosGraphSesiones] = useState<{} | any[]>([]);
+
+
     const rangos = rangosEdad;
 
+
     useEffect(() => {
+        const colores = ['#28b463 ', '#99DBD7', '#E3C567', '#00A69C', '#f4495d', '#94c1df']
         let datos = datosEdades;
         if (year > 0 && mes === 0) {
             datos = datos.filter(dato => dato.y === year)
@@ -30,6 +40,11 @@ const CajaEdades = ({ datosEdades, year, mes, tipo }: Props) => {
 
 
         let salida: DatoEdades[] = []
+        let labels = [];
+        let datos1 = [];
+
+        let graphSesiones: [[string, number | string, {} | string | undefined]] = [["Edades", "Sesiones", { role: "style" }]];
+
 
         for (let i = 0; i < rangos.length; i++) {
             let resultado = datos.filter(dato => dato.r === rangos[i].rango)
@@ -40,31 +55,41 @@ const CajaEdades = ({ datosEdades, year, mes, tipo }: Props) => {
                 salida.push(
                     { rango: rangos[i].rango, sesiones }
                 )
+                labels.push(rangos[i].rango)
+                datos1.push(sesiones)
+
+                graphSesiones.push([rangos[i].rango, sesiones, colores[i]])
+
             }
 
 
         }
 
 
+        setDatosGraphSesiones(graphSesiones)
+        setLabels(labels)
+        setDatos1(datos1)
         setDatosEdad(datos)
         setEdadDatos(salida)
 
     }, [datosEdades, year, mes, rangos])
 
 
-    const [first, setfirst] = useState(1)
-    const size = datosEdad.length;
+
+
     return (
         <>
+            <Dona
+                datos1={datos1}
 
-            <div className='bg-amber-300 p-8'>
-                <span>YEAR:  {year} </span>
-                <span>MES:  {mes} </span>
-                CajaEdades - SIZE: {size} -TIPO:  {tipo}  - {first}
-            </div>
-            <pre>
-                {JSON.stringify(edadDatos, undefined, 2)}
-            </pre>
+                labels={labels}
+                datosGraphSesiones={datosGraphSesiones}
+
+                titulo={'Rangos de edades'}
+                tipo={'barras'}
+            />
+
+
 
         </>
     )

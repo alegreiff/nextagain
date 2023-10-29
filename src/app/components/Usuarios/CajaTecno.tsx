@@ -19,7 +19,7 @@ const CajaTecno = ({ datosTecno, year, mes, tipo }: Props) => {
     const [labels, setLabels] = useState<string[]>([]);
     const [datos1, setDatos1] = useState<number[]>([]);
     const [datos2, setDatos2] = useState<number[]>([]);
-    const [activo, setActivo] = useState('sesiones')
+
     const [datosGraphSesiones, setDatosGraphSesiones] = useState<{} | any[]>([]);
     const [datosGraphUsuarios, setDatosGraphUsuarios] = useState<{} | any[]>([]);
 
@@ -38,8 +38,8 @@ const CajaTecno = ({ datosTecno, year, mes, tipo }: Props) => {
         let labels = [];
         let datos1 = [];
         let datos2 = [];
-        let graphSesiones: [[string, number | string]] = [["Género", "sesiones"]];
-        let graphUsuarios: [[string, number | string]] = [["Género", "usuarios"]];
+        let graphSesiones: [[string, number | string]] = [["Tecnología", "sesiones"]];
+        let graphUsuarios: [[string, number | string]] = [["Tecnología", "usuarios"]];
 
 
         for (let i = 0; i < rangos.length; i++) {
@@ -75,6 +75,7 @@ const CajaTecno = ({ datosTecno, year, mes, tipo }: Props) => {
             datosGraphSesiones={datosGraphSesiones}
             datosGraphUsuarios={datosGraphUsuarios}
             titulo={'Tecnología'}
+            tipo={'pie'}
         />
     )
 }

@@ -95,6 +95,7 @@ const CajaGenero = ({ datosGenero, year, mes, tipo }: Props) => {
             datosGraphSesiones={datosGraphSesiones}
             datosGraphUsuarios={datosGraphUsuarios}
             titulo={'Género'}
+            tipo={'pie'}
         />
 
     )
