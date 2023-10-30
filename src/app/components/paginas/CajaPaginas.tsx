@@ -61,7 +61,7 @@ const CajaPaginas = ({ paginas, year, mes, tipo }: Props) => {
     return (
         <>
             {/* {pagiDatos?.length} */}
-            {pagiDatos && <table className="w-[600px] bg-white table table-xs table-zebra">
+            {pagiDatos && <table className="w-full xl:w-[600px] bg-white table table-xs table-zebra">
                 <thead>
                     <tr>
                         <th>URL</th>
@@ -73,8 +73,10 @@ const CajaPaginas = ({ paginas, year, mes, tipo }: Props) => {
 
                     {pagiDatos.map((d, i) => (
                         i < 20 && <tr key={i}>
-                            <td>{d.url}</td>
-                            <td>{d.pv.toLocaleString()}</td>
+                            <td className='text-sky-600'>
+                                <a href={'https://www.bvscolombia.org' + d.url} target="_blank" >{d.url}</a>
+                            </td>
+                            <td className='font-bold'>{d.pv.toLocaleString()}</td>
                         </tr>
                     ))}
 
