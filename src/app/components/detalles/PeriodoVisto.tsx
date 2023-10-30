@@ -24,10 +24,10 @@ export const meses = [
 
 
 const PeriodoVisto = ({ general, year, mes, lastUpdated }: Props) => {
-    console.log("GENERAL", general)
+    /* console.log("GENERAL", general)
     console.log("YEAR", year)
     console.log("MES", mes)
-    console.log("LASTUPDATED", lastUpdated)
+    console.log("LASTUPDATED", lastUpdated) */
     const elmes = (val: number) => {
         const mes = val - 1;
         return meses[mes].mes

@@ -36,6 +36,11 @@ export interface Constantes {
   value: Array<number | string>;
 }
 
+export interface DatoPaginas {
+  url: string;
+  pv: number;
+}
+
 export interface DatoEdades {
   rango: string;
   sesiones: number;

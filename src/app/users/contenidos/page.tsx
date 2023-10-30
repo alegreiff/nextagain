@@ -7,7 +7,7 @@ import React from 'react'
 const pageContenidos = async () => {
     const paginas: Pagina[] = await getPaginas();
     const constantes: Constantes[] = await constantesData();
-
+    console.log(paginas)
 
     return (
 
